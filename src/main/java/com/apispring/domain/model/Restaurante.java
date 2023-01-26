@@ -1,4 +1,4 @@
-package com.apispring.domain;
+package com.apispring.domain.model;
 
 import java.math.BigDecimal;
 

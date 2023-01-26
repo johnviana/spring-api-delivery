@@ -1,33 +1,31 @@
-package com.apispring.domain;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.apispring.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
 @Entity
+@Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cozinha {
-	
+public class Cidade {
 	
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCozinha;
+	private Long idCidade;
 	
 	@Column
 	private String nome;
 	
-	@OneToMany(mappedBy = "cozinha")
-	private List<Restaurante> restaurante = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "estado_id", nullable = false)
+	private Estado estado;
 
 }

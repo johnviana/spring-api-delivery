@@ -1,4 +1,4 @@
-package com.apispring.domain;
+package com.apispring.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,17 +10,21 @@ import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table
 @Entity
-public class FormaDePagamento {
-	
+@Table
+public class Permissao {
+
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column
-	private Long idFormaPagamento;
+	private Long idPermissao;
 	
-	@Column(nullable = false)
-	private String descrica;
-
+	@Column
+	private String nome;
+	
+	@Column
+	private String descricao;
 }
+
+
