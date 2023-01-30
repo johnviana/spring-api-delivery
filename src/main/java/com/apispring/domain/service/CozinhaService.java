@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.apispring.domain.exception.EntidadeEmUsoException;
+import com.apispring.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apispring.domain.model.Cozinha;
 import com.apispring.domain.repository.CozinhaRepository;
 
@@ -27,7 +31,18 @@ public class CozinhaService {
 		return cozinhaRepository.save(cozinha);
 	}
 	
-	public void excluirCozinha(Cozinha cozinha) {
-	  cozinhaRepository.deleteById(cozinha.getIdCozinha());
+	public void excluirCozinha(Long cozinhaId) {
+		try {
+			cozinhaRepository.deleteById(cozinhaId);
+			
+		} catch (EmptyResultDataAccessException e) {
+			throw new EntidadeNaoEncontradaExcepetion(
+					String.format("Não tem cozinha do codigo %d", cozinhaId)); 
+			
+		} catch(DataIntegrityViolationException e ) {
+			throw new EntidadeEmUsoException(
+					String.format("Cozinha em uso %d", cozinhaId));
+		}
 	}
+	
 }

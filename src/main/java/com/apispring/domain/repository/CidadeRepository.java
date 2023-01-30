@@ -7,5 +7,5 @@ import com.apispring.domain.model.Cidade;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long>{
-
+	
 }
