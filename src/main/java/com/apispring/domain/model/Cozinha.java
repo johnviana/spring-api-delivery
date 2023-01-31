@@ -25,16 +25,16 @@ public class Cozinha {
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonProperty("id_cozinha")
-	private Long idCozinha;
+	private Long id;
 	
 	
 	@Column
-	@JsonProperty("nome_cozinha")
+	@JsonProperty("nome")
 	private String nome;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "cozinha")
 	private List<Restaurante> restaurante = new ArrayList<>();
+	
 
 }
