@@ -72,9 +72,9 @@ public class RestauranteController {
 	}
 	
 	@GetMapping("/taxa")
-	public List<Restaurante> buscarPorFrete(BigDecimal taxaInicial, 
+	public List<Restaurante> buscarPorFrete(String nome, BigDecimal taxaInicial, 
 			 BigDecimal taxaFinal){
-		return resutauranteRepository.findByTaxaFreteBetween(taxaInicial, taxaFinal);
+		return resutauranteRepository.find(nome, taxaInicial, taxaFinal);
 	}
 	
 	@GetMapping("/nomeid")
