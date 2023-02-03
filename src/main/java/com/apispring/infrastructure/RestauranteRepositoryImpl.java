@@ -1,4 +1,4 @@
-package com.apispring.domain;
+package com.apispring.infrastructure;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

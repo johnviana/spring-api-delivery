@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apispring.domain.exception.EntidadeNaoEncontradaExcepetion;
@@ -22,6 +21,7 @@ import com.apispring.domain.exception.NegocioException;
 import com.apispring.domain.model.Restaurante;
 import com.apispring.domain.repository.RestauranteRepository;
 import com.apispring.domain.service.RestauranteService;
+import com.apispring.infrastructure.spec.RestauranteSpecs;
 
 @RestController
 @RequestMapping(value = "api/restaurantes")
@@ -82,9 +82,14 @@ public class RestauranteController {
 		return resutauranteRepository.buscarPorNomeIdCozinha(nome, cozinhaId);
 	}
 	
-	
-	
+	@GetMapping("/taxazero")
+	public List<Restaurante> buscarComFreteGratesSpec(String nome){
+//		var comFreteGratis = new RestauranteComFreteGratisSpec();
+//		var comNomeIgual = new RestauranteComNomeSemelhantesSpec(nome);
 		
+		return resutauranteRepository.findAll(RestauranteSpecs.comFreteGratis()
+				.and(RestauranteSpecs.comNomeSemelhantes(nome)));
 	
+	}
 
 }
