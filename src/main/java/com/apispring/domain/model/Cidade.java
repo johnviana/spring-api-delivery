@@ -19,13 +19,13 @@ public class Cidade {
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCidade;
+	private Long id;
 	
 	@Column
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name = "estado_id", nullable = false)
+	@JoinColumn(nullable = false)
 	private Estado estado;
 
 }

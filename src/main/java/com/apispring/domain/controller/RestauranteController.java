@@ -31,11 +31,11 @@ public class RestauranteController {
 	RestauranteService restauranteService;
 	
 	@Autowired
-	RestauranteRepository resutauranteRepository;
+	RestauranteRepository restauranteRepository;
 	
 	@GetMapping
 	public List<Restaurante> listarTodosRestaurantes(){
-		return restauranteService.listarRestuarantes();
+		return restauranteRepository.findAll();
 	}
 	
 	@PostMapping
@@ -54,10 +54,10 @@ public class RestauranteController {
 			@RequestBody Restaurante restaurante){
 		
 		try {
-			Optional<Restaurante>restauranteAtual = resutauranteRepository.findById(id);
+			Optional<Restaurante>restauranteAtual = restauranteRepository.findById(id);
 				if(restauranteAtual.isPresent()) {
 					
-					BeanUtils.copyProperties(restaurante, restauranteAtual.get(), "id");
+					BeanUtils.copyProperties(restaurante, restauranteAtual.get(), "id","formasPagamento");
 					Restaurante restauranteSalva = restauranteService.adicionar(restauranteAtual.get());
 					return ResponseEntity.ok(restauranteSalva);
 				}
@@ -74,12 +74,12 @@ public class RestauranteController {
 	@GetMapping("/taxa")
 	public List<Restaurante> buscarPorFrete(String nome, BigDecimal taxaInicial, 
 			 BigDecimal taxaFinal){
-		return resutauranteRepository.find(nome, taxaInicial, taxaFinal);
+		return restauranteRepository.find(nome, taxaInicial, taxaFinal);
 	}
 	
 	@GetMapping("/nomeid")
 	public List<Restaurante> buscarNomeIdCozinha(String nome, Long cozinhaId){
-		return resutauranteRepository.buscarPorNomeIdCozinha(nome, cozinhaId);
+		return restauranteRepository.buscarPorNomeIdCozinha(nome, cozinhaId);
 	}
 	
 	@GetMapping("/taxazero")
@@ -87,7 +87,7 @@ public class RestauranteController {
 //		var comFreteGratis = new RestauranteComFreteGratisSpec();
 //		var comNomeIgual = new RestauranteComNomeSemelhantesSpec(nome);
 		
-		return resutauranteRepository.findAll(RestauranteSpecs.comFreteGratis()
+		return restauranteRepository.findAll(RestauranteSpecs.comFreteGratis()
 				.and(RestauranteSpecs.comNomeSemelhantes(nome)));
 	
 	}

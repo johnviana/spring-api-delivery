@@ -5,22 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table
 @Entity
-public class FormaDePagamento {
+@Data
+public class FormaPagamento {
 	
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Column
-	private Long idFormaPagamento;
+	private Long id;
 	
 	@Column(nullable = false)
-	private String descrica;
+	private String descricao;
 
 }
