@@ -16,6 +16,9 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, Long>
 
 //	List<Restaurante> findByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
 	
+	@Query("from Restaurante r LEFT JOIN FETCH r.cozinha LEFT JOIN FETCH r.formaPagamento")
+	List<Restaurante> findAll();
+	
 	List<Restaurante> findByNomeContainingAndCozinhaId(String nome, Long cozinhaId);
 	
 	@Query("FROM Restaurante where nome like %:nome and cozinha.id = :id")

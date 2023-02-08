@@ -37,11 +37,11 @@ public class CozinhaService {
 			
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaExcepetion(
-					String.format("Não tem cozinha do codigo %d", cozinhaId)); 
+					String.format("Não tem cozinha do codigo %d ", cozinhaId)); 
 			
 		} catch(DataIntegrityViolationException e ) {
 			throw new EntidadeEmUsoException(
-					String.format("Cozinha em uso %d", cozinhaId));
+					String.format("Cozinha em uso %d ", cozinhaId));
 		}
 	}
 	

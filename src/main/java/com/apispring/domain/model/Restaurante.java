@@ -49,10 +49,12 @@ public class Restaurante {
 	@Embedded
 	private Endereco endereco;
 	
+	@JsonIgnore
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime dataCadastro;
 	
+	@JsonIgnore
 	@UpdateTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime dataAtualizacao;
@@ -62,7 +64,7 @@ public class Restaurante {
 	private List<Produto> produtos = new ArrayList<>();
 	
 	
-	@JsonIgnore
+	
 	@ManyToMany
 	@JoinTable(name = "restaurante_forma_pagamento",
 	joinColumns = @JoinColumn(name = "restaurante_id"),
