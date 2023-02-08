@@ -16,6 +16,9 @@ import com.apispring.domain.repository.CozinhaRepository;
 @Service
 public class CozinhaService {
 
+	private static final String MSG_COZINHA_NAO_ENCONTRADA = 
+			"Entidade não encontrada com o codigo %d";
+	
 	@Autowired
 	CozinhaRepository cozinhaRepository;
 	
@@ -37,12 +40,18 @@ public class CozinhaService {
 			
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaExcepetion(
-					String.format("Não tem cozinha do codigo %d ", cozinhaId)); 
+					String.format(MSG_COZINHA_NAO_ENCONTRADA, cozinhaId)); 
 			
 		} catch(DataIntegrityViolationException e ) {
 			throw new EntidadeEmUsoException(
 					String.format("Cozinha em uso %d ", cozinhaId));
 		}
+	}
+	
+	public Cozinha buscarOuFalhar(Long cozinhaId) {
+		return cozinhaRepository.findById(cozinhaId)
+				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
+						String.format(MSG_COZINHA_NAO_ENCONTRADA, cozinhaId)));
 	}
 	
 }
