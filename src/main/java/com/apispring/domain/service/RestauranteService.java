@@ -22,22 +22,35 @@ public class RestauranteService {
 	@Autowired
 	CozinhaRepository cozinhaRespository;
 	
+	@Autowired
+	CozinhaService cozinhaService;
+	
 	
 	public List<Restaurante> listarRestuarantes(){
 		return restauranteRepository.findAll();
 	}
 	
-	
+
 	public Restaurante adicionar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
-		Cozinha cozinha = cozinhaRespository.findById(cozinhaId)
-				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
-						String.format("nao existe %d", cozinhaId)));
+		
+		
+		Cozinha cozinha = cozinhaService.buscarOuFalhar(cozinhaId); 
+		
+//		Cozinha cozinha = cozinhaRespository.findById(cozinhaId)
+//				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
+//						String.format("não existe codigo com %d", cozinhaId)));
+		
 		restaurante.setCozinha(cozinha);
 		
 		return restauranteRepository.saveAndFlush(restaurante);
 	}
 	
+	public Restaurante buscarOuFalhar(Long restauranteId) {
+		return restauranteRepository.findById(restauranteId)
+				.orElseThrow(()-> new EntidadeNaoEncontradaExcepetion(
+						String.format("Restaurante não encontrado %d ", restauranteId)));
+	}
 	
-
+	
 }
