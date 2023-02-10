@@ -1,12 +1,10 @@
 package com.apispring.domain.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.apispring.domain.exception.EntidadeEmUsoException;
 import com.apispring.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apispring.domain.model.Cozinha;
 import com.apispring.domain.model.Restaurante;
