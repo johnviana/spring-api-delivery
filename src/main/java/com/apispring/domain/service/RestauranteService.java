@@ -33,8 +33,6 @@ public class RestauranteService {
 
 	public Restaurante adicionar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
-		
-		
 		Cozinha cozinha = cozinhaService.buscarOuFalhar(cozinhaId); 
 		
 //		Cozinha cozinha = cozinhaRespository.findById(cozinhaId)

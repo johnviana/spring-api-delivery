@@ -1,4 +1,4 @@
-package com.apispring.domain.controller;
+package com.apispring.domain.controller.copy;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -61,26 +61,16 @@ public class RestauranteController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Restaurante> atualizar(@PathVariable Long id,
+	public Restaurante atualizar(@PathVariable Long id,
 			@RequestBody Restaurante restaurante){
 		
-		try {
-			Optional<Restaurante>restauranteAtual = restauranteRepository.findById(id);
-				if(restauranteAtual.isPresent()) {
-					
-					BeanUtils.copyProperties(restaurante, restauranteAtual.get(), "id",
-							"formasPagamento", "endereco", "produtos");
-					Restaurante restauranteSalva = restauranteService.adicionar(restauranteAtual.get());
-					return ResponseEntity.ok(restauranteSalva);
-				}
-				return ResponseEntity.notFound().build();		
+			Restaurante restauranteAtual = restauranteService.buscarOuFalhar(id);
 				
-			
-		} catch (EntidadeNaoEncontradaExcepetion e) {
-			throw new NegocioException(e.getMessage());	
-
-		}
-		 
+					BeanUtils.copyProperties(restaurante, restauranteAtual, "id",
+							"formasPagamento", "endereco", "produtos");
+					
+					return restauranteService.adicionar(restauranteAtual);
+					 
 	}
 	
 	@GetMapping("/taxa")
