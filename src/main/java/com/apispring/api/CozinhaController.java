@@ -28,7 +28,7 @@ import com.apispring.domain.service.CozinhaService;
 import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @RestController
-@RequestMapping("/api/cozinhas")
+@RequestMapping(value = "/api/cozinhas")
 public class CozinhaController {
 
 	@Autowired
