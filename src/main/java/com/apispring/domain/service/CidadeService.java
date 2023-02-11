@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.apispring.domain.exception.CidadeNaoEncontradaExcepetion;
 import com.apispring.domain.exception.EntidadeEmUsoException;
 import com.apispring.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apispring.domain.model.Cidade;
@@ -33,7 +34,7 @@ public class CidadeService {
 	
 	public Cidade buscarOuFalhar(Long id) {
 		return cidadeRepository.findById(id)
-				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
+				.orElseThrow(() -> new CidadeNaoEncontradaExcepetion(
 						String.format("Codigo de Cidade %d não existe ", id)));
 	}
 		
@@ -54,7 +55,7 @@ public class CidadeService {
 			cidadeRepository.deleteById(id);
 			
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaExcepetion(
+			throw new CidadeNaoEncontradaExcepetion(
 					String.format("Entidade de condigo %d não existe ", id)); 
 			
 		} catch(DataIntegrityViolationException e) {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.apispring.domain.exception.EntidadeEmUsoException;
 import com.apispring.domain.exception.EntidadeNaoEncontradaExcepetion;
+import com.apispring.domain.exception.EstadoNaoEncontradaExcepetion;
 import com.apispring.domain.model.Estado;
 import com.apispring.domain.repository.EstadoRepository;
 
@@ -28,7 +29,7 @@ public class EstadoService {
 	
 	public Estado buscarOuFalhar(Long id) {
 		return estadoRepository.findById(id)
-				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
+				.orElseThrow(() -> new EstadoNaoEncontradaExcepetion(
 						String.format(CODIGO_DE_ESTADO_NÃO_ENCONTRADO, id)));
 	}
 	
@@ -42,7 +43,7 @@ public class EstadoService {
 			estadoRepository.deleteById(id);
 			
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaExcepetion(
+			throw new EstadoNaoEncontradaExcepetion(
 					String.format(CODIGO_DE_ESTADO_NÃO_ENCONTRADO, id));
 			
 		} catch (DataIntegrityViolationException e) {
