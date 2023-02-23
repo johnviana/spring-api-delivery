@@ -3,6 +3,8 @@ package com.apiDelivery.api;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +47,7 @@ public class RestauranteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Restaurante salvar(@RequestBody Restaurante restaurante) {
+	public Restaurante salvar(@RequestBody @Valid Restaurante restaurante) {
 		
 		try {
 			return restauranteService.adicionar(restaurante);
