@@ -1,11 +1,9 @@
 package com.apiDelivery.api;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,13 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apiDelivery.domain.exception.EntidadeEmUsoException;
-import com.apiDelivery.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.domain.model.Cozinha;
 import com.apiDelivery.domain.repository.CozinhaRepository;
 import com.apiDelivery.domain.service.CozinhaService;
-
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @RestController
 @RequestMapping(value = "/api/cozinhas")
@@ -58,7 +52,7 @@ public class CozinhaController {
 		return cozinhaService.buscarOuFalhar(id_cozinha);
 	}
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<Cozinha> salvarCozinhar(@RequestBody Cozinha cozinha ){
 		Cozinha cozinhaSalva = cozinhaService.cadastrarCozinha(cozinha);
 		return ResponseEntity.ok(cozinhaSalva);
