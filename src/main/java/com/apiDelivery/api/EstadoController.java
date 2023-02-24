@@ -2,6 +2,8 @@ package com.apiDelivery.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,7 +42,7 @@ public class EstadoController {
 	
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public Estado salvar(@RequestBody Estado estado) {
+	public Estado salvar(@RequestBody @Valid Estado estado) {
 		return estadoService.salvarEstado(estado);
 	}
 	
