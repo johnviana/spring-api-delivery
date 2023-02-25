@@ -56,7 +56,7 @@ public class CozinhaController {
 	
 	@PostMapping
 	public ResponseEntity<Cozinha> salvarCozinhar(@RequestBody @Valid Cozinha cozinha ){
-		Cozinha cozinhaSalva = cozinhaService.salvar(cozinha);
+		Cozinha cozinhaSalva = cozinhaService.cadastrarCozinha(cozinha);
 		return ResponseEntity.ok(cozinhaSalva);
 		
 	}
@@ -67,7 +67,7 @@ public class CozinhaController {
 		Cozinha cozinhaAtual = cozinhaService.buscarOuFalhar(cozinhaId);
 		
 			BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
-			return cozinhaService.salvar(cozinhaAtual);			
+			return cozinhaService.cadastrarCozinha(cozinhaAtual);			
 		
 	}
 	

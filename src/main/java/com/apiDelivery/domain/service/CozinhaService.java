@@ -33,7 +33,7 @@ public class CozinhaService {
 	}
 	
 	@Transactional
-	public Cozinha salvar(Cozinha cozinha) {
+	public Cozinha cadastrarCozinha(Cozinha cozinha) {
 		return cozinhaRepository.save(cozinha);
 	}
 	
