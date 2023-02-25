@@ -30,10 +30,10 @@ import com.apiDelivery.infrastructure.spec.RestauranteSpecs;
 public class RestauranteController {
 	
 	@Autowired
-	RestauranteService restauranteService;
+	private RestauranteService restauranteService;
 	
 	@Autowired
-	RestauranteRepository restauranteRepository;
+	private RestauranteRepository restauranteRepository;
 	
 	@GetMapping
 	public List<Restaurante> listarTodosRestaurantes(){

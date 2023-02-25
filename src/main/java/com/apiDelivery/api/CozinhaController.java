@@ -28,10 +28,10 @@ import com.apiDelivery.domain.service.CozinhaService;
 public class CozinhaController {
 
 	@Autowired
-	CozinhaService cozinhaService;
+	private CozinhaService cozinhaService;
 
 	@Autowired
-	CozinhaRepository cozinhaRepository;
+	private CozinhaRepository cozinhaRepository;
 	
 	@GetMapping
 	public List<Cozinha> listartodos(){
@@ -62,7 +62,7 @@ public class CozinhaController {
 	}
 	
 	@PutMapping("/{id_cozinha}")
-	public Cozinha AtualizarCozinha(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha){
+	public Cozinha AtualizarCozinha(@PathVariable @Valid Long cozinhaId, @RequestBody Cozinha cozinha){
 		
 		Cozinha cozinhaAtual = cozinhaService.buscarOuFalhar(cozinhaId);
 		

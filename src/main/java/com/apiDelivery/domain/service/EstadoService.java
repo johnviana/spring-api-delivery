@@ -2,6 +2,8 @@ package com.apiDelivery.domain.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,6 +20,7 @@ public class EstadoService {
 	
 	private static final String ENTIDADE_ESTADO_EM_USO = "Entidade de código %d esta em uso ";
 	private static final String CODIGO_DE_ESTADO_NÃO_ENCONTRADO = "Codigo de Estado não encontrada %d ";
+	
 	@Autowired
 	private EstadoRepository estadoRepository;
 	
@@ -32,6 +35,7 @@ public class EstadoService {
 				.orElseThrow(() -> new EstadoNaoEncontradaExcepetion(
 						String.format(CODIGO_DE_ESTADO_NÃO_ENCONTRADO, id)));
 	}
+	
 	
 	public Estado salvarEstado(Estado estado) {
 		return estadoRepository.save(estado);
