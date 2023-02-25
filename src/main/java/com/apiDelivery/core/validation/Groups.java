@@ -1,4 +1,4 @@
-package com.apiDelivery;
+package com.apiDelivery.core.validation;
 
 public interface Groups {
 

@@ -28,10 +28,10 @@ import com.apiDelivery.domain.service.CozinhaService;
 public class CozinhaController {
 
 	@Autowired
-	CozinhaService cozinhaService;
+	private CozinhaService cozinhaService;
 
 	@Autowired
-	CozinhaRepository cozinhaRepository;
+	private CozinhaRepository cozinhaRepository;
 	
 	@GetMapping
 	public List<Cozinha> listartodos(){
@@ -56,18 +56,18 @@ public class CozinhaController {
 	
 	@PostMapping
 	public ResponseEntity<Cozinha> salvarCozinhar(@RequestBody @Valid Cozinha cozinha ){
-		Cozinha cozinhaSalva = cozinhaService.cadastrarCozinha(cozinha);
+		Cozinha cozinhaSalva = cozinhaService.salvar(cozinha);
 		return ResponseEntity.ok(cozinhaSalva);
 		
 	}
 	
 	@PutMapping("/{id_cozinha}")
-	public Cozinha AtualizarCozinha(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha){
+	public Cozinha AtualizarCozinha(@PathVariable @Valid Long cozinhaId, @RequestBody Cozinha cozinha){
 		
 		Cozinha cozinhaAtual = cozinhaService.buscarOuFalhar(cozinhaId);
 		
 			BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
-			return cozinhaService.cadastrarCozinha(cozinhaAtual);			
+			return cozinhaService.salvar(cozinhaAtual);			
 		
 	}
 	

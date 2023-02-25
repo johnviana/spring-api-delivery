@@ -3,6 +3,8 @@ package com.apiDelivery.domain.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -20,7 +22,7 @@ public class CozinhaService {
 			"Entidade não encontrada com o codigo %d";
 	
 	@Autowired
-	CozinhaRepository cozinhaRepository;
+	private CozinhaRepository cozinhaRepository;
 	
 	public List<Cozinha> listarCozinhas(){
 		return cozinhaRepository.findAll();
@@ -30,7 +32,8 @@ public class CozinhaService {
 	 return cozinhaRepository.findById(id);
 	}
 	
-	public Cozinha cadastrarCozinha(Cozinha cozinha) {
+	@Transactional
+	public Cozinha salvar(Cozinha cozinha) {
 		return cozinhaRepository.save(cozinha);
 	}
 	
