@@ -15,7 +15,7 @@
 	<name>spring-api-delivery</name>
 	<description>Api delivery de comidas</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
