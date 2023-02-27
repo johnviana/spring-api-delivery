@@ -1,0 +1,255 @@
+[33mcommit ab35d6575f7b6d5823152aff1de49a284e2349d0[m[33m ([m[1;36mHEAD -> [m[1;32mjohn[m[33m, [m[1;31morigin/john[m[33m)[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Feb 27 10:41:10 2023 -0300
+
+    Revert "fix: atualizacao o pom"
+    
+    This reverts commit adfa9b8de70e33c021967a9e074568bb7b53f1d9.
+
+[33mcommit adfa9b8de70e33c021967a9e074568bb7b53f1d9[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Sat Feb 25 13:45:40 2023 -0300
+
+    fix: atualizacao o pom
+
+[33mcommit 90ada45eba5c6279d7775df0caa57ea817ef723d[m[33m ([m[1;32mdev[m[33m)[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Sat Feb 25 12:40:56 2023 -0300
+
+    Revert "Create new footer"
+    This reverts commit e46b68d17f2c2b8951714093170776e3dda6d616.
+
+[33mcommit e46b68d17f2c2b8951714093170776e3dda6d616[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Sat Feb 25 12:23:32 2023 -0300
+
+    Create new footer
+
+[33mcommit f5f5a501a8e20e15e5d58b0f5cefc9cbdc3d4cec[m
+Merge: eb73695 f55a570
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Sat Feb 25 11:55:32 2023 -0300
+
+    Create new footer [issue 53]
+
+[33mcommit eb7369569f1bd7c649e73cf983b1496a04466adc[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Sat Feb 25 11:37:08 2023 -0300
+
+    voltar
+
+[33mcommit f55a57040f68a8e0afb40364717f73114e8a0d51[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 24 21:48:08 2023 -0300
+
+    feat: criando testes
+
+[33mcommit a2590a88abfa44c2ea0c1b2b58f29107627f4d6c[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 24 10:24:28 2023 -0300
+
+    feat: criando @valid para cidade estado
+
+[33mcommit 6ee5dc4c2f56dcc95c9735978aba6e48dfe69244[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 24 10:17:26 2023 -0300
+
+    feat: criando @valid groups cozinha
+
+[33mcommit af08cd54537b340e419cb70a32122677676f794c[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Thu Feb 23 20:37:06 2023 -0300
+
+    feat: criando validacoes @valid em restaurantes
+
+[33mcommit 76f84e0750bb1df51bbce687e3c3f659dec8660b[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Thu Feb 23 14:53:26 2023 -0300
+
+    feat: criando handler excepetion
+
+[33mcommit 3a1ce94940bc47620ca374f1fe5af5744c638bef[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Feb 13 15:22:13 2023 -0300
+
+    feat: criando problemtype
+
+[33mcommit 80c3c0353c080122d6ef08f0baf9f5ed252cfab1[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Feb 13 14:37:28 2023 -0300
+
+    fix: refatorando handle para mensagem global
+
+[33mcommit 89a78f661d3c60e4b13e81041814dc64dd73044f[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Sat Feb 11 09:29:34 2023 -0300
+
+    feat: criando execption para cada entidade
+
+[33mcommit 6035144c634160284b376b3d830f8ff1c488bad0[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 21:10:58 2023 -0300
+
+    fix: atualizando controlle restaurante no metodo atualizar e cadastrar para receber badrequest
+
+[33mcommit 5a91f7a52a9ca039ea1a845f6877bcc3dfc5344f[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 20:28:59 2023 -0300
+
+    feat: criando metodo atualizar cidade
+
+[33mcommit 54244da567e30aa0c392ca7908ad4d0ad170bff7[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 15:54:44 2023 -0300
+
+    feat: criando metodo de entidade cidade, service, controller, interface
+
+[33mcommit a407e8b87513cb8f160d9597890d0dba46fc7ca2[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 11:10:50 2023 -0300
+
+    feat: criando metodo de salvar, atualizar e excluir no Estado
+
+[33mcommit e158c61d46f2db92dd7be811ae034e4be0fddce1[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 10:46:02 2023 -0300
+
+    feat: criando ometodo de cadastro em estado
+
+[33mcommit bf03f312e49dc0e53b3bf8d37e07863dfa1942a1[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 10:34:03 2023 -0300
+
+    feat: criando estado controller, interface, service
+
+[33mcommit 3d0dbca3a7bf5c357bc0f72fdf4f766264173755[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 10 09:56:07 2023 -0300
+
+    fiz: refatorando as class para exceotuinrutime
+
+[33mcommit 2695e920e25b51a6c9b6933d1a5296ae78d1fa1c[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Feb 8 16:28:47 2023 -0300
+
+    fix: refatorando restaurante e cozinha
+
+[33mcommit 0bc77184c0c70faf9f90b6c354e7ce9b4d1385bb[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Feb 8 11:27:56 2023 -0300
+
+    fix: refatorando o codigo cozinha com o metodo buscaroufalhar
+
+[33mcommit 792e200c66085b5a37aebd23435557862514cf94[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Feb 8 09:54:33 2023 -0300
+
+    feat: criando excpetion
+
+[33mcommit 97d9d32b76664856f3c9e583d5774d44971e6ce5[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Feb 6 16:33:57 2023 -0300
+
+    feat: criando entidade usuario e realacionamento com grupo
+
+[33mcommit 0468bc5d372a1ecfa9a52f71be52034c765287f7[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Feb 6 15:45:41 2023 -0300
+
+    criando entidade produto grupo relacionamento
+
+[33mcommit c3c944cca87dee902af83754c8a5de35402b60ce[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Feb 6 11:53:51 2023 -0300
+
+    fix: criando relacionamento entre restaurante e formapagamento
+
+[33mcommit 4722893424f48f1512ac87917b9965bcfc51f5be[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Feb 3 11:24:53 2023 -0300
+
+    feat: criando consulta com specs
+
+[33mcommit bab78578450c787255a17f82a4058afe8b45ac7f[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Feb 1 13:05:56 2023 -0300
+
+    feat: criando jpql para consulta nome datafrete dinamico
+
+[33mcommit 3403dfbbc11034a9a303c79822c269f0bccebad1[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Tue Jan 31 13:54:05 2023 -0300
+
+    criando querys para cozinha e repository
+
+[33mcommit 7199eba981ec265f7892306940b326262dc034ca[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Mon Jan 30 09:33:15 2023 -0300
+
+    criando service cosinha delete, exception
+
+[33mcommit 52a07caa26be5b53f6ea55b30b8cef6c696dadbc[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Fri Jan 27 12:11:22 2023 -0300
+
+    src/feat: criando metodo de listar e entrada em cozinha
+
+[33mcommit f3ad372d0fbeff468a9324180d14576d36746f8a[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 25 22:14:30 2023 -0300
+
+    feat: criando entidaded, usuario, grupo, permissao, e listando todas as cozinha e por id
+
+[33mcommit f645130ad56f37db03a6dc99401d82f0a905e86d[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 25 13:44:32 2023 -0300
+
+    criando atributos tabela permissao
+
+[33mcommit 8aef7059241e9dc8b70844b6c52da797afbf41b3[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 25 13:39:41 2023 -0300
+
+    feat: criando atributos na tabela forma de pagamento
+
+[33mcommit b3ca1032088a23184557da80d911fe539e8fc3bd[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 25 13:31:34 2023 -0300
+
+    feat: criando manytoone entra cidade estado
+
+[33mcommit 85e582b92c9b6321b204e035a064de9a1c44840d[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 25 13:28:18 2023 -0300
+
+    feat: criando import para inserir no banco e os atribuls de estado
+
+[33mcommit 039300d63883439c06755c23db6c1f953e159a8e[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 18 19:55:08 2023 -0300
+
+    feat: criando mapeamento restaurante e cozinha
+
+[33mcommit b233eaebe80356d063c36a4ebd4fb6d6fa0b3a07[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 18 19:08:04 2023 -0300
+
+    feat: criando os atributos da tabela cozinha
+
+[33mcommit 1510578fc592e8c70ea0f4f2e9fd98587b35aea9[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 18 15:53:54 2023 -0300
+
+    feat: criando os campo da columna cidade
+
+[33mcommit d871bcbde7b0a7818e27d94ecaaf9fe59a4c0345[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 18 15:46:38 2023 -0300
+
+    teste
+
+[33mcommit fa6bfd992fccbca9634f27d103823d568b0460b3[m
+Author: johnviana <johnvianaluz@hotmail.com>
+Date:   Wed Jan 18 14:38:38 2023 -0300
+
+    feat: 

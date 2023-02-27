@@ -9,10 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+<<<<<<< HEAD
 import com.apiDelivery.core.validation.Groups;
+=======
+>>>>>>> parent of 6ee5dc4 (feat: criando @valid groups cozinha)
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -23,13 +25,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cozinha {
 	
-	@NotNull(groups = Groups.CozinhaId.class)
+	@NotNull
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
 	@Column
 	private String nome;
 	

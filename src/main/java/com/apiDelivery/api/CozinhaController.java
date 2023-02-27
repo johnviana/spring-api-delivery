@@ -2,8 +2,6 @@ package com.apiDelivery.api;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,7 +53,7 @@ public class CozinhaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Cozinha> salvarCozinhar(@RequestBody @Valid Cozinha cozinha ){
+	public ResponseEntity<Cozinha> salvarCozinhar(@RequestBody Cozinha cozinha ){
 		Cozinha cozinhaSalva = cozinhaService.cadastrarCozinha(cozinha);
 		return ResponseEntity.ok(cozinhaSalva);
 		
