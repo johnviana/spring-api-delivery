@@ -36,11 +36,12 @@ public class EstadoService {
 						String.format(CODIGO_DE_ESTADO_NÃO_ENCONTRADO, id)));
 	}
 	
-	
+	@Transactional
 	public Estado salvarEstado(Estado estado) {
 		return estadoRepository.save(estado);
 	}
 	
+	@Transactional
 	public void excluirEstado(Long id){
 		
 		try {

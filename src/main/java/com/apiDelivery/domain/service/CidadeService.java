@@ -2,6 +2,8 @@ package com.apiDelivery.domain.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -37,7 +39,8 @@ public class CidadeService {
 				.orElseThrow(() -> new CidadeNaoEncontradaExcepetion(
 						String.format("Codigo de Cidade %d não existe ", id)));
 	}
-		
+	
+	@Transactional
 	public Cidade salvarCidade(Cidade cidade) {
 		
 		Long estadoId = cidade.getEstado().getId();
@@ -49,6 +52,7 @@ public class CidadeService {
 		
 	}
 	
+	@Transactional
 	public void excluirCidade(Long id) {
 		try {
 			

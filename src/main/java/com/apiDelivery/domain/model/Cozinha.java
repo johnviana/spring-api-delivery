@@ -11,10 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-<<<<<<< HEAD
-import com.apiDelivery.core.validation.Groups;
-=======
->>>>>>> parent of 6ee5dc4 (feat: criando @valid groups cozinha)
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;

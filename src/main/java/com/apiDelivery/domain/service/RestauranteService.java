@@ -2,6 +2,8 @@ package com.apiDelivery.domain.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -31,7 +33,7 @@ public class RestauranteService {
 		return restauranteRepository.findAll();
 	}
 	
-
+	@Transactional
 	public Restaurante adicionar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
 		Cozinha cozinha = cozinhaService.buscarOuFalhar(cozinhaId); 
@@ -46,6 +48,7 @@ public class RestauranteService {
 	}
 	
 	
+	@Transactional
 	public void excluirRestaurante(Long id) {
 		try {
 			restauranteRepository.deleteById(id);

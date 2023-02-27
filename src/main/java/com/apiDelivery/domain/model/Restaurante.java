@@ -24,11 +24,8 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-<<<<<<< HEAD
-import com.apiDelivery.core.validation.Groups;
-=======
->>>>>>> parent of 6ee5dc4 (feat: criando @valid groups cozinha)
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -51,6 +48,7 @@ public class Restaurante {
 	@Column(name = "taxa_frete")
 	private BigDecimal taxaFrete;
 	
+	@JsonIgnoreProperties(value = "nome", allowGetters = true )
 	@Valid
 	@NotNull
 	@ManyToOne
