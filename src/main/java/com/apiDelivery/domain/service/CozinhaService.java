@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class CozinhaService {
 			"Entidade não encontrada com o codigo %d";
 	
 	@Autowired
-	private CozinhaRepository cozinhaRepository;
+	public CozinhaRepository cozinhaRepository;
 	
 	public List<Cozinha> listarCozinhas(){
 		return cozinhaRepository.findAll();
