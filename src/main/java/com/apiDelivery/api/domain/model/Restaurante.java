@@ -1,7 +1,7 @@
 package com.apiDelivery.api.domain.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,19 +16,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
-import javax.validation.groups.ConvertGroup;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.apiDelivery.api.core.validation.Groups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -51,9 +46,9 @@ public class Restaurante {
 	@Column(name = "taxa_frete")
 	private BigDecimal taxaFrete;
 	
-	@ConvertGroup(from = Default.class, to = Groups.CozinhaId.class	)
-	@Valid
-	@NotNull
+//	@ConvertGroup(from = Default.class, to = Groups.CozinhaId.class	)
+//	@Valid
+//	@NotNull
 	@JsonIgnoreProperties(value = "nome", allowGetters = true )
 	@ManyToOne
 	@JoinColumn(name = "cozinha_id")
@@ -62,16 +57,15 @@ public class Restaurante {
 	@JsonIgnore
 	@Embedded
 	private Endereco endereco;
-
-	@JsonIgnore
+	
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
-	private LocalDateTime dataCadastro;
-
-	@JsonIgnore
+	private OffsetDateTime dataCadastro;
+	
 	@UpdateTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
-	private LocalDateTime dataAtualizacao;
+	private OffsetDateTime dataAtualizacao;
+
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "restaurante")
