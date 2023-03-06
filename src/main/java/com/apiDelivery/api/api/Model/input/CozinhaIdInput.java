@@ -1,4 +1,4 @@
-package com.apiDelivery.api.api.input;
+package com.apiDelivery.api.api.Model.input;
 
 import lombok.Setter;
 

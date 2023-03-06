@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.apiDelivery.api.api.Model.CozinhaModel;
 import com.apiDelivery.api.api.Model.RestauranteModel;
 import com.apiDelivery.api.domain.model.Restaurante;
 
@@ -23,7 +22,8 @@ public class RestauranteModelAssembler {
 	
 
 	public List<RestauranteModel> toCollectionModel(List<Restaurante> restaurantes) {
-		return restaurantes.stream().map(restaurante -> toModel(restaurante)).collect(Collectors.toList());
+		return restaurantes.stream()
+				.map(restaurante -> toModel(restaurante)).collect(Collectors.toList());
 	}
 
 }

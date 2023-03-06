@@ -1,4 +1,4 @@
-package com.apiDelivery.api.api.input;
+package com.apiDelivery.api.api.Model.input;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
