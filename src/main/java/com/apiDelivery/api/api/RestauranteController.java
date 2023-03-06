@@ -2,12 +2,9 @@ package com.apiDelivery.api.api;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,15 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apiDelivery.api.api.Model.CozinhaModel;
 import com.apiDelivery.api.api.Model.RestauranteModel;
 import com.apiDelivery.api.api.assembler.RestauranteModelAssembler;
 import com.apiDelivery.api.api.disassembler.RestauranteInputDisassembler;
-import com.apiDelivery.api.api.input.CozinhaIdInput;
 import com.apiDelivery.api.api.input.RestauranteInput;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.exception.NegocioException;
-import com.apiDelivery.api.domain.model.Cozinha;
 import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.repository.RestauranteRepository;
 import com.apiDelivery.api.domain.service.RestauranteService;
@@ -79,7 +73,7 @@ public class RestauranteController {
 	}
 
 	@PutMapping("/{id}")
-	public RestauranteModel atualizar(@PathVariable Long id, @RequestBody RestauranteInput restauranteInput) {
+	public RestauranteModel atualizar(@PathVariable @Valid Long id, @RequestBody RestauranteInput restauranteInput) {
 
 		try {
 			
@@ -124,6 +118,19 @@ public class RestauranteController {
 		return restauranteRepository
 				.findAll(RestauranteSpecs.comFreteGratis().and(RestauranteSpecs.comNomeSemelhantes(nome)));
 
+	}
+	
+	@PutMapping("/{id}/ativar")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void ativar(@PathVariable Long id){
+		restauranteService.ativar(id);
+		
+	}
+	
+	@DeleteMapping("/{id}/ativar")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void inativar(@PathVariable Long id) {
+		restauranteService.inativar(id);
 	}
 
 

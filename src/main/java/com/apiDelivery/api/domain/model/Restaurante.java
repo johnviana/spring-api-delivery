@@ -45,10 +45,7 @@ public class Restaurante {
 	@PositiveOrZero
 	@Column(name = "taxa_frete")
 	private BigDecimal taxaFrete;
-	
-//	@ConvertGroup(from = Default.class, to = Groups.CozinhaId.class	)
-//	@Valid
-//	@NotNull
+
 	@JsonIgnoreProperties(value = "nome", allowGetters = true )
 	@ManyToOne
 	@JoinColumn(name = "cozinha_id")
@@ -57,6 +54,8 @@ public class Restaurante {
 	@JsonIgnore
 	@Embedded
 	private Endereco endereco;
+	
+	private Boolean ativo = Boolean.TRUE; 
 	
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
@@ -75,5 +74,13 @@ public class Restaurante {
 	@ManyToMany
 	@JoinTable(name = "restaurante_forma_pagamento", joinColumns = @JoinColumn(name = "restaurante_id"), inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
 	private List<FormaPagamento> formaPagamento = new ArrayList<>();
+	
+	public void ativar() {
+		setAtivo(true);
+	}
+	
+	public void inativar() {
+		setAtivo(false);
+	}
 
 }

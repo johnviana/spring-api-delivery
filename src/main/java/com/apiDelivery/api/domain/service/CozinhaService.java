@@ -40,10 +40,11 @@ public class CozinhaService {
 		return cozinhaRepository.save(cozinha);
 	}
 	
-
+	@Transactional
 	public void excluirCozinha(Long cozinhaId) {
 		try {
 			cozinhaRepository.deleteById(cozinhaId);
+			cozinhaRepository.flush();
 			
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaExcepetion(
