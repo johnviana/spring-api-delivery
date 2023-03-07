@@ -1,4 +1,4 @@
-package com.apiDelivery.api.api.assembler;
+package com.apiDelivery.api.api.Model.input;
 
 import javax.validation.constraints.NotBlank;
 
