@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
+import com.apiDelivery.api.domain.model.Cidade;
 import com.apiDelivery.api.domain.model.Cozinha;
 import com.apiDelivery.api.domain.model.Restaurante;
+import com.apiDelivery.api.domain.repository.CidadeRepository;
 import com.apiDelivery.api.domain.repository.CozinhaRepository;
 import com.apiDelivery.api.domain.repository.RestauranteRepository;
 
@@ -28,6 +30,9 @@ public class RestauranteService {
 	@Autowired
 	CozinhaService cozinhaService;
 	
+	@Autowired
+	CidadeService cidadeService;
+	
 	
 	public List<Restaurante> listarRestuarantes(){
 		return restauranteRepository.findAll();
@@ -38,11 +43,13 @@ public class RestauranteService {
 		Long cozinhaId = restaurante.getCozinha().getId();
 		Cozinha cozinha = cozinhaService.buscarOuFalhar(cozinhaId); 
 		
-//		Cozinha cozinha = cozinhaRespository.findById(cozinhaId)
-//				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
-//						String.format("não existe codigo com %d", cozinhaId)));
+		Long cidadeId = restaurante.getEndereco().getCidade().getId();
+		Cidade cidade = cidadeService.buscarOuFalhar(cidadeId);
+		
 		
 		restaurante.setCozinha(cozinha);
+		restaurante.getEndereco().setCidade(cidade);
+				
 		
 		return restauranteRepository.save(restaurante);
 	}

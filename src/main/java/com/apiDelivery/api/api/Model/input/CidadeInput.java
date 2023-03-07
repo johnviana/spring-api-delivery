@@ -1,8 +1,5 @@
 package com.apiDelivery.api.api.Model.input;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,20 +9,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RestauranteInput {
-	
+public class CidadeInput {
+
 	@NotBlank
 	private String nome;
 	
-	@NotNull
-	private BigDecimal taxaFrete;
-	
-	@NotNull
-	@Valid
-	private CozinhaIdInput cozinha;
-	
 	@Valid
 	@NotNull
-	private EnderecoInput endereco;
-
+	private EstadoIdInput estado;
 }

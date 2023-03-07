@@ -38,7 +38,6 @@ public class Restaurante {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
 	@Column
 	private String nome;
 
@@ -51,7 +50,6 @@ public class Restaurante {
 	@JoinColumn(name = "cozinha_id")
 	private Cozinha cozinha;
 
-	@JsonIgnore
 	@Embedded
 	private Endereco endereco;
 	

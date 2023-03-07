@@ -51,7 +51,7 @@ public class CidadeController {
 	}
 	
 	@PutMapping("/{id}")
-	public Cidade atualizarCidade(@PathVariable Long id, 
+	public Cidade atualizarCidade(@PathVariable @Valid Long id, 
 			@RequestBody Cidade cidade) {
 		
 		Cidade cidadeNova = cidadeService.buscarOuFalhar(id);
