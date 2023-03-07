@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RestauranteModel {
+	
 	private Long id;
 	private String nome;
 	private BigDecimal taxaFrete;
