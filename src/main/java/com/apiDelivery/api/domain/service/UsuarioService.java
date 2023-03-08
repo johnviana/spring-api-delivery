@@ -1,6 +1,9 @@
 package com.apiDelivery.api.domain.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,9 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private EntityManager entityManager;
 
 	public List<Usuario> listarTodos() {
 		return usuarioRepository.findAll();
@@ -23,6 +29,16 @@ public class UsuarioService {
 
 	@Transactional
 	public Usuario salvar(Usuario usuario) {
+		
+		entityManager.detach(usuario);
+		
+		Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail()); 
+		
+		if(usuarioExistente.isPresent() && !usuarioExistente.get().equals(usuario)) {
+			throw new NegocioException(
+					String.format("Já existe um email cadastrado no banco de dados %s", usuario.getEmail()));
+		}
+		
 		return usuarioRepository.save(usuario);
 	}
 

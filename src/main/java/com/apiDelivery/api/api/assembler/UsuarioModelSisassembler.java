@@ -17,4 +17,8 @@ public class UsuarioModelSisassembler {
 		return modelMapper.map(usuarioInput, Usuario.class);
 	}
 	
+	public void copyToDomainObject(UsuarioInput usuarioInput, Usuario usuario) {
+		modelMapper.map(usuarioInput, usuario);
+	}
+	
 }
