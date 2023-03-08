@@ -1,5 +1,6 @@
 package com.apiDelivery.api.api.assembler;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class FormaPagamantoModelAssembler {
 	}
 	
 
-	public List<FormaPagamentoModel> toCollectionModel(List<FormaPagamento> formaPagamentos) {
+	public List<FormaPagamentoModel> toCollectionModel(Collection<FormaPagamento> formaPagamentos) {
 		return formaPagamentos.stream()
 				.map(formaPagamento -> toModel(formaPagamento)).collect(Collectors.toList());
 	}

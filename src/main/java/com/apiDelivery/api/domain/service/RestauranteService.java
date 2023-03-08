@@ -13,8 +13,8 @@ import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.model.Cidade;
 import com.apiDelivery.api.domain.model.Cozinha;
+import com.apiDelivery.api.domain.model.FormaPagamento;
 import com.apiDelivery.api.domain.model.Restaurante;
-import com.apiDelivery.api.domain.repository.CidadeRepository;
 import com.apiDelivery.api.domain.repository.CozinhaRepository;
 import com.apiDelivery.api.domain.repository.RestauranteRepository;
 
@@ -32,6 +32,9 @@ public class RestauranteService {
 	
 	@Autowired
 	CidadeService cidadeService;
+	
+	@Autowired
+	FormaPagamentoService formaPagamentoService;
 	
 	
 	public List<Restaurante> listarRestuarantes(){
@@ -93,4 +96,26 @@ public class RestauranteService {
 	}
 	
 	
+	/*
+	 * dessociar as forma de pagamento
+	 */
+	
+	@Transactional
+	public void desassociarFormaPagamento(Long restauranteId, Long formaPagamentoId) {
+		Restaurante restaurante = buscarOuFalhar(restauranteId);
+		
+		FormaPagamento formaPagamento = formaPagamentoService.bucarOuFalhar(formaPagamentoId);
+		restaurante.desassociarFormaPagamento(formaPagamento);
+	}
+	
+	@Transactional
+	public void associarFormaPagamento(Long restauranteId, Long formaPagamentoId) {
+		Restaurante restaurante = buscarOuFalhar(restauranteId);
+		
+		FormaPagamento formaPagamento = formaPagamentoService.bucarOuFalhar(formaPagamentoId);
+		restaurante.associarFormaPagamento(formaPagamento);
+	}
+	
+	
+
 }
