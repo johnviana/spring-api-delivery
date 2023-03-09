@@ -19,8 +19,8 @@ import com.apiDelivery.api.api.Model.UsuarioModel;
 import com.apiDelivery.api.api.Model.input.SenhaInput;
 import com.apiDelivery.api.api.Model.input.UsuarioComSenhaInput;
 import com.apiDelivery.api.api.Model.input.UsuarioInput;
-import com.apiDelivery.api.api.assembler.UsuarioModelAssembler;
-import com.apiDelivery.api.api.assembler.UsuarioModelSisassembler;
+import com.apiDelivery.api.api.assembler.DisassemblerModel.UsuarioModelDisassembler;
+import com.apiDelivery.api.api.assembler.assemblerModel.UsuarioModelAssembler;
 import com.apiDelivery.api.domain.model.Usuario;
 import com.apiDelivery.api.domain.service.UsuarioService;
 
@@ -35,7 +35,7 @@ public class UsuarioController {
 	private UsuarioModelAssembler usuarioAssembler;
 
 	@Autowired
-	private UsuarioModelSisassembler usuarioDisassembler;
+	private UsuarioModelDisassembler usuarioDisassembler;
 
 	@GetMapping
 	public List<UsuarioModel> listar() {

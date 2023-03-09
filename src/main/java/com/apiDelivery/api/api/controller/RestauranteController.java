@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apiDelivery.api.api.Model.RestauranteModel;
 import com.apiDelivery.api.api.Model.input.RestauranteInput;
-import com.apiDelivery.api.api.assembler.RestauranteInputDisassembler;
-import com.apiDelivery.api.api.assembler.RestauranteModelAssembler;
+import com.apiDelivery.api.api.assembler.DisassemblerModel.RestauranteInputDisassembler;
+import com.apiDelivery.api.api.assembler.assemblerModel.RestauranteModelAssembler;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.exception.NegocioException;
 import com.apiDelivery.api.domain.model.Restaurante;

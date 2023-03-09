@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apiDelivery.api.api.Model.FormaPagamentoModel;
-import com.apiDelivery.api.api.assembler.FormaPagamantoModelAssembler;
+import com.apiDelivery.api.api.assembler.assemblerModel.FormaPagamantoModelAssembler;
 import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.service.RestauranteService;
 

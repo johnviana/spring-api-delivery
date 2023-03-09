@@ -1,4 +1,4 @@
-package com.apiDelivery.api.api.assembler;
+package com.apiDelivery.api.api.assembler.DisassemblerModel;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

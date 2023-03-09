@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apiDelivery.api.api.Model.FormaPagamentoModel;
 import com.apiDelivery.api.api.Model.input.FormaPagamentoInput;
-import com.apiDelivery.api.api.assembler.FormaPagamantoModelAssembler;
-import com.apiDelivery.api.api.assembler.FormaPagamentoInputDisassembler;
+import com.apiDelivery.api.api.assembler.DisassemblerModel.FormaPagamentoInputDisassembler;
+import com.apiDelivery.api.api.assembler.assemblerModel.FormaPagamantoModelAssembler;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.exception.NegocioException;
 import com.apiDelivery.api.domain.model.FormaPagamento;

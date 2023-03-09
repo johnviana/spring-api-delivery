@@ -1,4 +1,4 @@
-package com.apiDelivery.api.api.assembler;
+package com.apiDelivery.api.api.assembler.assemblerModel;
 
 import java.util.Collection;
 import java.util.List;

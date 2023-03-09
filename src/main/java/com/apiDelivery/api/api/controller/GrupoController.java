@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apiDelivery.api.api.Model.GrupoModel;
 import com.apiDelivery.api.api.Model.input.GrupoInput;
-import com.apiDelivery.api.api.assembler.GrupoModelAssembler;
-import com.apiDelivery.api.api.assembler.GrupoModelDisassembler;
+import com.apiDelivery.api.api.assembler.DisassemblerModel.GrupoModelDisassembler;
+import com.apiDelivery.api.api.assembler.assemblerModel.GrupoModelAssembler;
 import com.apiDelivery.api.domain.model.Grupo;
 import com.apiDelivery.api.domain.service.GrupoService;
 
