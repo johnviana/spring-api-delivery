@@ -1,7 +1,6 @@
 package com.apiDelivery.api.domain.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.model.FormaPagamento;
-import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.repository.FormaPagamentoRepository;
 
 @Service
