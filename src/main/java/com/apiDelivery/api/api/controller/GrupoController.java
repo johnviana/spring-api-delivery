@@ -26,58 +26,56 @@ import com.apiDelivery.api.domain.service.GrupoService;
 @RestController
 @RequestMapping(value = "/api/grupos")
 public class GrupoController {
-	
+
 	@Autowired
 	private GrupoService grupoService;
-	
+
 	@Autowired
 	private GrupoModelAssembler grupoAssembler;
-	
+
 	@Autowired
 	private GrupoModelDisassembler grupoDisassembler;
-	
-	
+
 	@GetMapping
-	public List<GrupoModel> listar(){
+	public List<GrupoModel> listar() {
 		List<Grupo> todosGrupos = grupoService.listarTodos();
 		return grupoAssembler.toCollectionModel(todosGrupos);
 
 	}
-	
+
 	@GetMapping("/{id}")
 	public GrupoModel buscarGrupo(@PathVariable Long id) {
-		
+
 		Grupo grupoId = grupoService.buscarOuFalhar(id);
 		return grupoAssembler.toModel(grupoId);
-		
+
 	}
-	
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public GrupoModel salvarGrupo(@RequestBody GrupoInput grupoInput) {
-		Grupo grupo = grupoDisassembler.toDomainObject(grupoInput); 
+		Grupo grupo = grupoDisassembler.toDomainObject(grupoInput);
 		grupo = grupoService.salvar(grupo);
-		
-		return  grupoAssembler.toModel(grupo);
+
+		return grupoAssembler.toModel(grupo);
 	}
-	
-     @PutMapping("/{grupoId}")
-     public GrupoModel atualizar(@PathVariable Long grupoId,
-             @RequestBody @Valid GrupoInput grupoInput) {
-    	 
-         Grupo grupoAtual = grupoService.buscarOuFalhar(grupoId);
-       
-         grupoDisassembler.copyToDomainObject(grupoInput, grupoAtual);
-         
-         grupoAtual = grupoService.salvar(grupoAtual);
-         
-         return grupoAssembler.toModel(grupoAtual);
-     }
-     
-     @DeleteMapping("/{grupoId}")
-     @ResponseStatus(HttpStatus.NO_CONTENT)
-     public void remover(@PathVariable Long grupoId) {
-         grupoService.excluir(grupoId);	
-     } 
-    	 
-     }
+
+	@PutMapping("/{grupoId}")
+	public GrupoModel atualizar(@PathVariable Long grupoId, @RequestBody @Valid GrupoInput grupoInput) {
+
+		Grupo grupoAtual = grupoService.buscarOuFalhar(grupoId);
+
+		grupoDisassembler.copyToDomainObject(grupoInput, grupoAtual);
+
+		grupoAtual = grupoService.salvar(grupoAtual);
+
+		return grupoAssembler.toModel(grupoAtual);
+	}
+
+	@DeleteMapping("/{grupoId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable Long grupoId) {
+		grupoService.excluir(grupoId);
+	}
+
+}

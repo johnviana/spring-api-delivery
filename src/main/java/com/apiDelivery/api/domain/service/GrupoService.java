@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.model.Grupo;
+import com.apiDelivery.api.domain.model.Permissao;
 import com.apiDelivery.api.domain.repository.GrupoRepository;
 
 @Service
@@ -56,8 +57,22 @@ public class GrupoService {
 						String.format("Entidade não encontrada ", id)));
 	}
 	
+	@Transactional
+	public void desassociarPermissao(Long grupoId, Long permissaoId) {
+		Grupo grupo = buscarOuFalhar(grupoId);
+		Permissao permissao = permissaoService.buscarOuFalhar(permissaoId);
+		
+		grupo.removerPermissoes(permissao);
+	}
 	
-	
+	@Transactional
+	public void associarPermissao(Long grupoId, Long permissaoId) {
+		
+		Grupo grupo = buscarOuFalhar(grupoId);
+		Permissao permissao = permissaoService.buscarOuFalhar(permissaoId);
+		
+		grupo.adicionarPermissao(permissao);
+	}
 	
 	
 }
