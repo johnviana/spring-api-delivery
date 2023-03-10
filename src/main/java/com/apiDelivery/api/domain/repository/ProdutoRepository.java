@@ -12,7 +12,7 @@ import com.apiDelivery.api.domain.model.Restaurante;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	
-	@Query("from Produto where restaurante.id = :restaurante and id = : produto")
+	@Query("from Produto where restaurante.id = :restaurante and id = :produto")
 	Optional<Produto> findbyId(@Param("restaurante") Long restauranteId,
 			@Param("produto") Long produtoId);
 	

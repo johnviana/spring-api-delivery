@@ -55,7 +55,9 @@ public class Restaurante {
 	@Embedded
 	private Endereco endereco;
 	
-	private Boolean ativo = Boolean.TRUE; 
+	private Boolean ativo = Boolean.TRUE;
+	
+	private Boolean aberto = Boolean.FALSE;
 	
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
@@ -81,6 +83,14 @@ public class Restaurante {
 	
 	public void inativar() {
 		setAtivo(false);
+	}
+	
+	public void aberto() {
+	
+		setAberto(true);
+	}
+	public void fechado() {
+		setAberto(false);
 	}
 	
 	public boolean associarFormaPagamento(FormaPagamento formaPagamento) {
