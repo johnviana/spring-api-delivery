@@ -55,7 +55,7 @@ public class CidadeController {
 			@RequestBody Cidade cidade) {
 		
 		Cidade cidadeNova = cidadeService.buscarOuFalhar(id);
-		BeanUtils.copyProperties(cidade, cidadeNova, "id");
+		BeanUtils.copyProperties(cidade, cidadeNova);
 		
 		try {
 			

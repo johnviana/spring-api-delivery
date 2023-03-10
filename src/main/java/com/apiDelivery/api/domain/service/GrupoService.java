@@ -21,8 +21,8 @@ public class GrupoService {
 	@Autowired
 	private GrupoRepository grupoRepository;
 	
-	
-	
+	@Autowired
+	private PermissaoService permissaoService;
 	
 	public List<Grupo> listarTodos(){
 		return grupoRepository.findAll();
@@ -55,6 +55,9 @@ public class GrupoService {
 				.orElseThrow(()-> new EntidadeNaoEncontradaExcepetion(
 						String.format("Entidade não encontrada ", id)));
 	}
+	
+	
+	
 	
 	
 }
