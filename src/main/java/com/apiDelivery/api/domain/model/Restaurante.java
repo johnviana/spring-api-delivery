@@ -74,8 +74,18 @@ public class Restaurante {
 
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "restaurante_forma_pagamento", joinColumns = @JoinColumn(name = "restaurante_id"), inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
+	@JoinTable(name = "restaurante_forma_pagamento", 
+	joinColumns = @JoinColumn(name = "restaurante_id"), 
+	inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
 	private Set<FormaPagamento> formaPagamento = new HashSet<>();
+	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "restaurante_usuario_responsavel", 
+			joinColumns = @JoinColumn(name = "restaurante_id"), 
+			inverseJoinColumns = @JoinColumn( name = "usuario_id") )
+	private Set<Usuario> usuarios = new HashSet<>();
+	
 	
 	public void ativar() {
 		setAtivo(true);

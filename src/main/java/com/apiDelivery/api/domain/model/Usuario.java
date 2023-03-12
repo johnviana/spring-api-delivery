@@ -2,7 +2,9 @@ package com.apiDelivery.api.domain.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,7 +56,8 @@ public class Usuario {
 	@ManyToMany
 	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"),
 			inverseJoinColumns = @JoinColumn(name = "grupo_id"))
-	private List<Grupo> grupos = new ArrayList<>();
+	private Set<Grupo> grupos = new HashSet<>(); 
+;
 	
 	/*
 	 * Metodos para senhas
@@ -66,6 +69,19 @@ public class Usuario {
 	
 	public boolean senhaNaoCoincideCom(String senha) {
 		return !senhaCoincideCom(senha);
+	}
+	
+	/*
+	 * Metodos para remover grupo e adicionar grupo
+	 */
+	
+	
+	public boolean removerGrupo(Grupo grupo) {
+		return getGrupos().remove(grupo);
+	}
+	
+	public boolean adicionarGrupo(Grupo grupo) {
+		return getGrupos().add(grupo);
 	}
 
 }

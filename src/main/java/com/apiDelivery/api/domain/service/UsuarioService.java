@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.exception.NegocioException;
+import com.apiDelivery.api.domain.model.Grupo;
 import com.apiDelivery.api.domain.model.Usuario;
 import com.apiDelivery.api.domain.repository.UsuarioRepository;
 
@@ -19,6 +20,9 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private GrupoService grupoService;
 	
 	@Autowired
 	private EntityManager entityManager;
@@ -58,4 +62,22 @@ public class UsuarioService {
             .orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
             		String.format("Usuario não encontrado", usuarioId)));
     }
+	
+	@Transactional
+	public void desassociar(Long usuarioId, Long grupoId) {
+		Usuario usuario = buscarOuFalhar(usuarioId);
+		Grupo grupo = grupoService.buscarOuFalhar(grupoId);
+		
+		usuario.removerGrupo(grupo);
+	}
+	
+	@Transactional
+	public void associar(Long usuarioId, Long grupoId) {
+		Usuario usuario = buscarOuFalhar(usuarioId);
+		Grupo grupo = grupoService.buscarOuFalhar(grupoId);
+		
+		usuario.adicionarGrupo(grupo); 
+	}
+
+	
 }
