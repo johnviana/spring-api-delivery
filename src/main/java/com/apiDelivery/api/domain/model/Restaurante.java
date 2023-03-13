@@ -18,7 +18,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -84,7 +83,7 @@ public class Restaurante {
 	@JoinTable(name = "restaurante_usuario_responsavel", 
 			joinColumns = @JoinColumn(name = "restaurante_id"), 
 			inverseJoinColumns = @JoinColumn( name = "usuario_id") )
-	private Set<Usuario> usuarios = new HashSet<>();
+	private Set<Usuario> responsaveis = new HashSet<>();
 	
 	
 	public void ativar() {
@@ -109,5 +108,13 @@ public class Restaurante {
 	
 	public boolean desassociarFormaPagamento(FormaPagamento formaPagamento) {
 		return getFormaPagamento().remove(formaPagamento);
+	}
+	
+	public boolean associarResponsavel(Usuario usuario) {
+		return getResponsaveis().add(usuario);
+	}
+	
+	public boolean desassociarResponsavel(Usuario usuario) {
+		return getResponsaveis().remove(usuario);
 	}
 }

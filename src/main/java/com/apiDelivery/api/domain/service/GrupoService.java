@@ -67,7 +67,6 @@ public class GrupoService {
 	
 	@Transactional
 	public void associarPermissao(Long grupoId, Long permissaoId) {
-		
 		Grupo grupo = buscarOuFalhar(grupoId);
 		Permissao permissao = permissaoService.buscarOuFalhar(permissaoId);
 		

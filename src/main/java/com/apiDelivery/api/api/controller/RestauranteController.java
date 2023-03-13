@@ -82,8 +82,6 @@ public class RestauranteController {
 		
 		restauranteInputDisassembler.copyToDomainObject(restauranteInput, restauranteAtual);
 				
-		
-		
 //		BeanUtils.copyProperties(restaurante, restauranteAtual, 
 //				"id", "formasPagamento","dataCadastro", "endereco", "produtos");
 		
@@ -131,6 +129,30 @@ public class RestauranteController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void inativar(@PathVariable Long id) {
 		restauranteService.inativar(id);
+	}
+	
+	@PutMapping("/ativacoes")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void ativarEmMassa(@RequestBody List<Long> restaurantesIds) {
+		try {
+			
+		} catch (EntidadeNaoEncontradaExcepetion e) {
+			throw new NegocioException(e.getMessage(), e);
+		}
+		restauranteService.ativarGeral(restaurantesIds);
+	}
+	
+	@DeleteMapping("/inativacoes")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void desattivarEmMassa(@RequestBody List<Long> restaurantesIds) {
+		try {
+			restauranteService.inativarGeral(restaurantesIds);
+			
+		} catch (EntidadeNaoEncontradaExcepetion e) {
+			throw new NegocioException(
+					String.format(e.getMessage(), e));
+			// TODO: handle exception
+		}
 	}
 	
 	@PutMapping("/{restauranteId}/abertura")
