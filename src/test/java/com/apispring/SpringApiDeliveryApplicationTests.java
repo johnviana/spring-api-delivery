@@ -7,15 +7,12 @@ import javax.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 
-import com.apiDelivery.domain.model.Cozinha;
-import com.apiDelivery.domain.service.CozinhaService;
+import com.apiDelivery.api.domain.model.Cozinha;
+import com.apiDelivery.api.domain.service.CozinhaService;
+
 
 @ActiveProfiles("test")
 @SpringBootTest
