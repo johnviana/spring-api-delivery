@@ -5,6 +5,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
@@ -35,6 +36,9 @@ public class Pedido {
 	private Long id;
 	
 	@Column
+	private String codigo;
+	
+	@Column
 	private BigDecimal subtotal;
 	
 	@Column
@@ -44,7 +48,7 @@ public class Pedido {
 	private BigDecimal valorTotal;
 	
 	@Embedded
-	private Endereco endereco;
+	private Endereco enderecoEntrega;
 	
 	@Enumerated(EnumType.STRING)
 	private statusPedido status = statusPedido.CRIADO;
@@ -57,27 +61,29 @@ public class Pedido {
 	private OffsetDateTime dataEntrega;
 
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn()
 	private FormaPagamento formaPagamento;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn()
 	private Restaurante restaurante;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_cliente_id", nullable = false)
+	@JoinColumn(name = "usuario_cliente_id")
 	private Usuario cliente;
 	
-	@OneToMany(mappedBy = "pedido")
-	private List<Itempedido> itens = new ArrayList<>();
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<ItemPedido> itens = new ArrayList<>();
 	
 	
 	public void calcularValorTotal() {
-		this.subtotal = getItens().stream()
-				.map(item -> item.getPrecoTotal())
-				.reduce(BigDecimal.ZERO, BigDecimal::add);
-		
-		this.valorTotal = this.subtotal.add(this.taxaFrete);
+	    getItens().forEach(ItemPedido::calcularPrecoTotal);
+	    
+	    this.subtotal = getItens().stream()
+	        .map(item -> item.getPrecoTotal())
+	        .reduce(BigDecimal.ZERO, BigDecimal::add);
+	    
+	    this.valorTotal = this.subtotal.add(this.taxaFrete);
 	}
 	
 	public void definirFrete() {
