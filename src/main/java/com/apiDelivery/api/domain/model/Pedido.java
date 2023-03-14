@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -51,7 +52,7 @@ public class Pedido {
 	private Endereco enderecoEntrega;
 	
 	@Enumerated(EnumType.STRING)
-	private statusPedido status = statusPedido.CRIADO;
+	private StatusPedido status = StatusPedido.CRIADO;
 	
 	@CreationTimestamp
 	private OffsetDateTime dataCriacao;
@@ -88,6 +89,11 @@ public class Pedido {
 	
 	public void definirFrete() {
 		setTaxaFrete(getRestaurante().getTaxaFrete());
+	}
+	
+	@PrePersist
+	private void gerarCodigo() {
+		setCodigo(UUID.randomUUID().toString());
 	}
 	
 	

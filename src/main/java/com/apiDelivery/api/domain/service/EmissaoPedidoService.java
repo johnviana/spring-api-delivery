@@ -74,10 +74,10 @@ public class EmissaoPedidoService {
 	
 	
 	
-	public Pedido buscarOuFalhar(Long pedidoId) {
-		return pedidoRepository.findById(pedidoId)
+	public Pedido buscarOuFalhar(String codigoId) {
+		return pedidoRepository.findByCodigo(codigoId)
 				.orElseThrow(() -> new EntidadeNaoEncontradaExcepetion(
-				String.format("Entidade Pedido Pedido não encontrada", pedidoId)));
+				String.format("Entidade Pedido Pedido não encontrada", codigoId)));
 	
 	}
 	
