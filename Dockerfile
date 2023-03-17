@@ -2,7 +2,9 @@ FROM openjdk:11-jre
 
 WORKDIR /appdelivery
 
-copy target/*.jar /appdelivery/api.jar
+ARG JAR_FILE
+
+COPY target/${JAR_FILE} /appdelivery/api.jar
 
 EXPOSE 8080
 
