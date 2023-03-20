@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 import com.apiDelivery.api.domain.exception.NegocioException;
 import com.apiDelivery.api.domain.model.Pedido;
 import com.apiDelivery.api.domain.model.StatusPedido;
+import com.apiDelivery.api.domain.service.EnvioEmailService.Mensagem;
 
 @Service
 public class FluxoPedidoService {
 	
 	@Autowired
-	EmissaoPedidoService emissaoPedidoService;
+	private EmissaoPedidoService emissaoPedidoService;
+
+	@Autowired
+	private EnvioEmailService envioEmail;
 	
 	@Transactional
 	public void confirmar(String codigoId ) {
@@ -30,6 +34,16 @@ public class FluxoPedidoService {
 		}
 		pedido.setStatus(StatusPedido.CONFIRMADO);
 		pedido.setDataConfirmacao(OffsetDateTime.now());
+		
+		var mensagem = Mensagem.builder()
+				.assunto(pedido.getRestaurante().getNome() + " - Pedido confirmado")
+				.corpo("o Pedido de código" + pedido.getCodigo() + " foi Confirmado")
+				.destinatario(pedido.getCliente().getEmail())
+				.destinatario("johnvianaluz@hotmail.com")
+				.build();	
+		
+		envioEmail.enviar(mensagem);
+				
 	}
 	
 	@Transactional

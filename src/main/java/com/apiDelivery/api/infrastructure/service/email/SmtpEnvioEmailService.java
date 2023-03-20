@@ -1,4 +1,4 @@
-package com.apiDelivery.api.infrastructure.service;
+package com.apiDelivery.api.infrastructure.service.email;
 
 import javax.mail.internet.MimeMessage;
 
@@ -21,23 +21,19 @@ public class SmtpEnvioEmailService implements EnvioEmailService {
 	
 	@Override
 	public void enviar(Mensagem mensagem) {
-		
 		try {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 			
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
-//			helper.setFrom(emailProperties.getRemetente());
-			helper.setTo(mensagem.getDestinatario().toArray(new String[0]));
+			helper.setFrom(emailProperties.getRemetente());
+			helper.setTo(mensagem.getDestinatarios().toArray(new String[0]));
 			helper.setSubject(mensagem.getAssunto());
 			helper.setText(mensagem.getCorpo(), true);
-			mailSender.send(mimeMessage);
 			
+			mailSender.send(mimeMessage);
 		} catch (Exception e) {
-			throw new EmailException("Não foi possivel enviar o email", e);
+			throw new EmailException("Não foi possível enviar e-mail", e);
 		}
-		
-		
-		
 	}
 
 }
