@@ -3,21 +3,17 @@ package com.apiDelivery.api.domain.service;
 import java.util.Map;
 import java.util.Set;
 
-import lombok.Builder;
 import lombok.Getter;
-import lombok.Singular;
-
+import lombok.Setter;
 
 public interface EnvioEmailService {
 
 	void enviar(Mensagem mensagem);
 	
 	@Getter
-	@Builder
+	@Setter
 	class Mensagem {
-		
-		@Singular
-		private Set<String> destinatarios;
+		private Set<String> destinatario;
 		private String assunto;
 		private String corpo;
 		

@@ -1,4 +1,4 @@
-package com.apiDelivery.api.infrastructure.service.email;
+package com.apiDelivery.api.infrastructure.service;
 
 import java.io.IOException;
 
@@ -33,21 +33,30 @@ public class SmtpEnvioEmailService implements EnvioEmailService {
 	
 	@Override
 	public void enviar(Mensagem mensagem) {
+		
 		try {
 			String corpo = processarTemplate(mensagem);
 			
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 			
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
-			helper.setFrom(emailProperties.getRemetente());
-			helper.setTo(mensagem.getDestinatarios().toArray(new String[0]));
+//			helper.setFrom(emailProperties.getRemetente());
+			helper.setTo(mensagem.getDestinatario().toArray(new String[0]));
 			helper.setSubject(mensagem.getAssunto());
+<<<<<<< HEAD:src/main/java/com/apiDelivery/api/infrastructure/service/email/SmtpEnvioEmailService.java
 			helper.setText(corpo, true);
 			
+=======
+			helper.setText(mensagem.getCorpo(), true);
+>>>>>>> parent of edba48c (feat: criando metodo para envio de email):src/main/java/com/apiDelivery/api/infrastructure/service/SmtpEnvioEmailService.java
 			mailSender.send(mimeMessage);
+			
 		} catch (Exception e) {
-			throw new EmailException("Não foi possível enviar e-mail", e);
+			throw new EmailException("Não foi possivel enviar o email", e);
 		}
+		
+		
+		
 	}
 	
 	private String processarTemplate(Mensagem mensagem) {

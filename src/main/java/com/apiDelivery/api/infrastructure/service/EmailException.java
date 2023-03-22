@@ -1,4 +1,4 @@
-package com.apiDelivery.api.infrastructure.service.email;
+package com.apiDelivery.api.infrastructure.service;
 
 public class EmailException extends RuntimeException {
 
