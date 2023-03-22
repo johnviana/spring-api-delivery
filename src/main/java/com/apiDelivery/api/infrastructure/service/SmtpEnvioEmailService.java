@@ -1,7 +1,5 @@
 package com.apiDelivery.api.infrastructure.service;
 
-import java.io.IOException;
-
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +11,8 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import com.apiDelivery.api.core.email.EmailProperties;
 import com.apiDelivery.api.domain.service.EnvioEmailService;
 
-import freemarker.core.ParseException;
 import freemarker.template.Configuration;
-import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
-import freemarker.template.TemplateNotFoundException;
 
 @Service
 public class SmtpEnvioEmailService implements EnvioEmailService {
@@ -40,15 +35,11 @@ public class SmtpEnvioEmailService implements EnvioEmailService {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 			
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
-//			helper.setFrom(emailProperties.getRemetente());
-			helper.setTo(mensagem.getDestinatario().toArray(new String[0]));
+			helper.setFrom(emailProperties.getRemetente());
+			helper.setTo(mensagem.getDestinatarios().toArray(new String[0]));
 			helper.setSubject(mensagem.getAssunto());
-<<<<<<< HEAD:src/main/java/com/apiDelivery/api/infrastructure/service/email/SmtpEnvioEmailService.java
 			helper.setText(corpo, true);
 			
-=======
-			helper.setText(mensagem.getCorpo(), true);
->>>>>>> parent of edba48c (feat: criando metodo para envio de email):src/main/java/com/apiDelivery/api/infrastructure/service/SmtpEnvioEmailService.java
 			mailSender.send(mimeMessage);
 			
 		} catch (Exception e) {
