@@ -19,21 +19,26 @@ import com.apiDelivery.domain.service.CozinhaService;
 @SpringBootTest
 public class CadastroCozinhaIntegrationTests  {
 	
-	@Autowired
-	public CozinhaService cadastroCozinha;
+	@Autowired  
+    @Qualifier("ConzinhaService")
+	private CozinhaService cozinhaService;
 	
 	@Test
-	public void testarCadastroCozinhaSemNome() {
-		Cozinha novaCozinha = new Cozinha();
-		novaCozinha.setNome(null);
+	public void deveFalhar_QuandoCadastrarCozinhaSemNome() {
+	   CozinhaService cozinhaService = new CozinhaService();
+		
+		Cozinha cozinha = new Cozinha();
+	    cozinha.setNome("john");
 
-		ConstraintViolationException erroEsperado =
-				Assertions.assertThrows(ConstraintViolationException.class, () -> {
-					cadastroCozinha.salvar(novaCozinha);
-				});
-
-		assertThat(erroEsperado).isNotNull();
+	    ConstraintViolationException erro = 
+	            Assertions.assertThrows(ConstraintViolationException.class, () -> {
+	                cozinhaService.cadastrarCozinha(cozinha);
+	    });
+	    assertThat(erro).isNotNull();
+				
+		}
 	}
+	
 
 	}
 	
