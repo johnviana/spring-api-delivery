@@ -1,5 +1,6 @@
 package com.apiDelivery.api.domain.service;
 
+import java.util.Map;
 import java.util.Set;
 
 import lombok.Builder;
@@ -19,6 +20,9 @@ public interface EnvioEmailService {
 		private Set<String> destinatarios;
 		private String assunto;
 		private String corpo;
+		
+		@Singular("variavel")
+		private Map<String, Object> variaveis;
 		
 	}
 	

@@ -37,10 +37,10 @@ public class FluxoPedidoService {
 		
 		var mensagem = Mensagem.builder()
 				.assunto(pedido.getRestaurante().getNome() + " - Pedido confirmado")
-				.corpo("o Pedido de código" + pedido.getCodigo() + " foi Confirmado")
+				.corpo("pedido-confirmado.html")
+				.variavel("pedido", pedido)
 				.destinatario(pedido.getCliente().getEmail())
-				.destinatario("johnvianaluz@hotmail.com")
-				.build();	
+				.build();
 		
 		envioEmail.enviar(mensagem);
 				
