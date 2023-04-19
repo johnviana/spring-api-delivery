@@ -54,9 +54,8 @@ public class Usuario {
 	@ManyToMany
 	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"),
 			inverseJoinColumns = @JoinColumn(name = "grupo_id"))
-	private Set<Grupo> grupos = new HashSet<>(); 
-;
-	
+	private Set<Grupo> grupos = new HashSet<>();
+		
 	/*
 	 * Metodos para senhas
 	 */

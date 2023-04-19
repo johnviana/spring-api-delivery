@@ -17,9 +17,10 @@ services:
   algafood-api:
     image: algafood-api
     command: ["/wait-for-it.sh", "algafood-mysql:3306", "-t", "30", "--", "java", "-jar", "api.jar"]
-    environment:
+    environment:  
       DB_HOST: algafood-mysql
-      SPRING_PROFILES_ACTIVE: development
+      SPRING_REDIS_HOST: algafood-redis
+      SPRING_PROFILES_ACTIVE: production
     networks:
       - algafood-network
     depends_on:
