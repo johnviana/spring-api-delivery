@@ -1,5 +1,6 @@
 package com.apiDelivery.api.api.assembler.DisassemblerModel;
 
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ import com.apiDelivery.api.domain.model.FormaPagamento;
 import com.apiDelivery.api.domain.model.Restaurante;
 
 @Component
+@AllArgsConstructor
 public class FormaPagamentoInputDisassembler {
 	
 	@Autowired
