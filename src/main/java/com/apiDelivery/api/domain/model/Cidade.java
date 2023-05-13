@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.groups.ConvertGroup;
 import javax.validation.groups.Default;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.apiDelivery.api.core.validation.Groups;
 
 import lombok.Data;
@@ -21,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cidade {
+public class Cidade extends RepresentationModel<Cidade> {
 	
 	@Id
 	@EqualsAndHashCode.Include

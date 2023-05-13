@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,9 +51,19 @@ public class CozinhaController {
 		
 	}
 	
+	
 	@GetMapping("/{id_cozinha}")
 	public Cozinha buscarCozinha(@PathVariable Long id_cozinha) {
-		return cozinhaService.buscarOuFalhar(id_cozinha);
+		Cozinha cozinha = cozinhaService.buscarOuFalhar(id_cozinha);
+		
+		cozinha.add(WebMvcLinkBuilder.linkTo(Cozinha.class)
+				.slash(cozinha.getId()).withSelfRel());
+		
+		cozinha.add(WebMvcLinkBuilder.linkTo(Cozinha.class).withRel("cozinhas"));
+		
+//		cozinha.add(Link.of("http://localhost:8080/api/cozinhas/1"));
+//		cozinha.add(Link.of("http://localhost:8080/api/cozinhas", "cozinhas"));
+		return cozinha;
 	}
 	
 	@PostMapping

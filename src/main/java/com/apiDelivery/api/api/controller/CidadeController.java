@@ -6,6 +6,7 @@ import com.apiDelivery.api.domain.model.Cidade;
 import com.apiDelivery.api.domain.service.CidadeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,15 @@ public class CidadeController {
 	
 	@GetMapping("/{id}")
 	public Cidade buscarCidade(@PathVariable Long id) {
-		return cidadeService.buscarOuFalhar(id);
+		 Cidade cidade = cidadeService.buscarOuFalhar(id);
+		 
+		 cidade.add(WebMvcLinkBuilder.linkTo(Cidade.class)
+				 .slash(cidade.getId()).withSelfRel());
+		 
+		 cidade.getEstado().add(WebMvcLinkBuilder.linkTo(EstadoController.class)
+				 .slash(cidade.getEstado().getId()).withSelfRel());
+		 
+		 return cidade;
 	}
 	
 	@PostMapping

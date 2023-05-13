@@ -55,6 +55,16 @@ class CozinhaServiceTest {
 
     @Test
     void cadastrarCozinha() {
+
+        Mockito.when(cozinhaRepository.save(Mockito.any())).thenReturn(startCozinha());
+
+        Cozinha response = cozinhaService.cadastrarCozinha(cozinha);
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(Cozinha.class, response.getClass());
+        Assertions.assertEquals(ID, response.getId());
+        Assertions.assertEquals(NOME, response.getNome());
+
     }
 
     @Test
@@ -65,9 +75,12 @@ class CozinhaServiceTest {
     void buscarOuFalhar() {
     }
 
-    private void startCozinha(){
+    private Cozinha  startCozinha(){
 
         Cozinha cozinha = new Cozinha(ID, NOME);
+        cozinha.setId(1L);
+        cozinha.setNome("john");
         optionalCozinha = Optional.of(new Cozinha(ID, NOME));
+        return cozinha;
     }
 }
