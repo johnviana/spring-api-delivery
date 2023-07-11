@@ -2,7 +2,6 @@ package com.apiDelivery.api.api.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +21,8 @@ import com.apiDelivery.api.api.assembler.DisassemblerModel.GrupoModelDisassemble
 import com.apiDelivery.api.api.assembler.assemblerModel.GrupoModelAssembler;
 import com.apiDelivery.api.domain.model.Grupo;
 import com.apiDelivery.api.domain.service.GrupoService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/grupos")

@@ -2,7 +2,6 @@ package com.apiDelivery.api.api.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +21,8 @@ import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.repository.ProdutoRepository;
 import com.apiDelivery.api.domain.service.ProdutoService;
 import com.apiDelivery.api.domain.service.RestauranteService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/restaurantes/{restauranteId}/produtos")

@@ -2,7 +2,6 @@ package com.apiDelivery.api.domain.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,6 +17,8 @@ import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.model.Usuario;
 import com.apiDelivery.api.domain.repository.CozinhaRepository;
 import com.apiDelivery.api.domain.repository.RestauranteRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class RestauranteService {

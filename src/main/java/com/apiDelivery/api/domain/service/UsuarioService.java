@@ -3,7 +3,6 @@ package com.apiDelivery.api.domain.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,8 @@ import com.apiDelivery.api.domain.exception.NegocioException;
 import com.apiDelivery.api.domain.model.Grupo;
 import com.apiDelivery.api.domain.model.Usuario;
 import com.apiDelivery.api.domain.repository.UsuarioRepository;
+
+import jakarta.persistence.EntityManager;
 
 @Service
 public class UsuarioService {

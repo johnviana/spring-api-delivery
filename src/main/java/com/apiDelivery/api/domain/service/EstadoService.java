@@ -2,7 +2,6 @@ package com.apiDelivery.api.domain.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,6 +13,8 @@ import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.exception.EstadoNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.model.Estado;
 import com.apiDelivery.api.domain.repository.EstadoRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class EstadoService {

@@ -2,7 +2,6 @@ package com.apiDelivery.api.api.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apiDelivery.api.domain.model.Cozinha;
 import com.apiDelivery.api.domain.repository.CozinhaRepository;
 import com.apiDelivery.api.domain.service.CozinhaService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/cozinhas")

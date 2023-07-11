@@ -4,14 +4,15 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
 import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.repository.RestauranteRepositoryQuery;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 @Repository
 public class RestauranteRepositoryImpl implements RestauranteRepositoryQuery {

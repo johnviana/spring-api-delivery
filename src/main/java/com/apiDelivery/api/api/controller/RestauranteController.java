@@ -3,7 +3,6 @@ package com.apiDelivery.api.api.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +26,8 @@ import com.apiDelivery.api.domain.model.Restaurante;
 import com.apiDelivery.api.domain.repository.RestauranteRepository;
 import com.apiDelivery.api.domain.service.RestauranteService;
 import com.apiDelivery.api.infrastructure.spec.RestauranteSpecs;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "api/restaurantes")

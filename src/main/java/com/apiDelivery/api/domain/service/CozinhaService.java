@@ -3,7 +3,6 @@ package com.apiDelivery.api.domain.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +15,8 @@ import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.model.Cozinha;
 import com.apiDelivery.api.domain.repository.CozinhaRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 @Component
