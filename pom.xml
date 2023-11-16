@@ -19,8 +19,10 @@
 	<properties>
 		<modelmapper.version>3.1.0</modelmapper.version>
 		<java.version>17</java.version>
+		<java-jwt.version>3.18.3</java-jwt.version>
 		<dockerfile-maven-version>1.4.13</dockerfile-maven-version>
 		<springauthserver.version>0.3.1</springauthserver.version>
+
 	</properties>
 
 	<dependencies>
@@ -136,6 +138,11 @@
 
 		<!-- Security -->
 		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
@@ -149,6 +156,12 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${java-jwt.version}</version>
 		</dependency>
 
 		<dependency>
