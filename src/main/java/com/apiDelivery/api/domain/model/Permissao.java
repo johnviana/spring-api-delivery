@@ -2,30 +2,38 @@ package com.apiDelivery.api.domain.model;
 
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.io.Serializable;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Data
-public class Permissao {
+@Table(name = "permissao")
+public class Permissao implements GrantedAuthority, Serializable {
+
+
+	public Permissao(){}
 
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column
 	private Long id;
-	
+
 	@Column
 	private String nome;
 	
 	@Column
 	private String descricao;
+
+	@Override
+	public String getAuthority() {
+		return this.descricao;
+	}
 }
 
 
