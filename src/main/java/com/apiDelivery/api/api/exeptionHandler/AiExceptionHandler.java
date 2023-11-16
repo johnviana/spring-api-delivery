@@ -1,10 +1,9 @@
 package com.apiDelivery.api.api.exeptionHandler;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
+import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
+import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
+import com.apiDelivery.api.domain.exception.InvalidJwtAuthenticationException;
+import com.apiDelivery.api.domain.exception.NegocioException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -19,10 +18,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.apiDelivery.api.api.exeptionHandler.Problem.Fild;
-import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
-import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
-import com.apiDelivery.api.domain.exception.NegocioException;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class AiExceptionHandler extends ResponseEntityExceptionHandler {
@@ -126,6 +124,19 @@ public class AiExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<?> tratarNegocioExcpetion(NegocioException ex, WebRequest request) {
 
 		HttpStatus status = HttpStatus.BAD_REQUEST;
+		ProblemType problemType = ProblemType.ERRO_NEGOCIO;
+		String detail = ex.getMessage();
+
+		Problem problem = createProblemBuilder(status, problemType, detail).userMassage(detail).build();
+
+		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+
+	}
+
+	@ExceptionHandler(InvalidJwtAuthenticationException.class)
+	public ResponseEntity<?> handleInvalidJwtAuthenticationException(NegocioException ex, WebRequest request) {
+
+		HttpStatus status = HttpStatus.FORBIDDEN;
 		ProblemType problemType = ProblemType.ERRO_NEGOCIO;
 		String detail = ex.getMessage();
 
