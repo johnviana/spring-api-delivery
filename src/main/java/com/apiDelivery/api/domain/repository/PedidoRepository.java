@@ -1,11 +1,10 @@
 package com.apiDelivery.api.domain.repository;
 
-import java.util.Optional;
-
+import com.apiDelivery.api.domain.model.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.apiDelivery.api.domain.model.Pedido;
+import java.util.Optional;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {

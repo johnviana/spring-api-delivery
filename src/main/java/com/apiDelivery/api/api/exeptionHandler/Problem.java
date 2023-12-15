@@ -1,13 +1,12 @@
 package com.apiDelivery.api.api.exeptionHandler;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import lombok.Builder;
 import lombok.Getter;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Builder
@@ -26,9 +25,10 @@ public class Problem {
 	@Getter
 	@Builder
 	public static class Fild{
-		
+
 		private String name;
 		private String userMessage;
+
 		
 	}
 	

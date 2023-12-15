@@ -1,22 +1,17 @@
 package com.apiDelivery.api.domain.service;
 
-import java.util.List;
-
-
+import com.apiDelivery.api.domain.exception.CidadeNaoEncontradaExcepetion;
+import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
+import com.apiDelivery.api.domain.model.Cidade;
+import com.apiDelivery.api.domain.model.Estado;
+import com.apiDelivery.api.domain.repository.CidadeRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.apiDelivery.api.domain.exception.CidadeNaoEncontradaExcepetion;
-import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
-import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
-import com.apiDelivery.api.domain.model.Cidade;
-import com.apiDelivery.api.domain.model.Estado;
-import com.apiDelivery.api.domain.repository.CidadeRepository;
-import com.apiDelivery.api.domain.repository.EstadoRepository;
-
-import jakarta.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class CidadeService {

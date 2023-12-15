@@ -7,9 +7,6 @@ import com.apiDelivery.api.domain.model.Usuario;
 import com.apiDelivery.api.domain.repository.UsuarioRepository;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +15,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService  {
 
 	private Logger logger = Logger.getLogger(UsuarioService.class.getName());
 
@@ -84,15 +81,15 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		logger.info("FINDING ONE USER BY NAME" + username + "!");
-		var user = usuarioRepository.findBynome(username);
-		if (user != null) {
-			return user;
-		} else {
-			throw new UsernameNotFoundException("Us	erName " + username + "not found!");
-		}
-
-	}
+//	@Override
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//		logger.info("FINDING ONE USER BY NAME" + username + "!");
+//		var user = usuarioRepository.findBynome(username);
+//		if (user != null) {
+//			return user;
+//		} else {
+//			throw new UsernameNotFoundException("User Name " + username + "not found!");
+//		}
+//
+//	}
 }

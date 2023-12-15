@@ -1,30 +1,25 @@
-package com.apiDelivery.api.core.security;
+package com.apiDelivery.api.domain.model.vo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
 public class TokenVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public TokenVO(){}
+
     private String userName;
-    private Boolean autenticated;
+    private Boolean authenticated;
     private Date created;
     private Date expiration;
     private String accessToken;
     private String refreshToken;
 
-    public TokenVO(){}
-
-    public TokenVO(String userName,
-                   Boolean autenticated,
-                   Date created,
-                   Date expiration,
-                   String accessToken,
-                   String refreshToken) {
+    public TokenVO(String userName, Boolean authenticated, Date created,
+                   Date expiration, String accessToken, String refreshToken) {
         this.userName = userName;
-        this.autenticated = autenticated;
+        this.authenticated = authenticated;
         this.created = created;
         this.expiration = expiration;
         this.accessToken = accessToken;
@@ -39,12 +34,12 @@ public class TokenVO implements Serializable {
         this.userName = userName;
     }
 
-    public Boolean getAutenticated() {
-        return autenticated;
+    public Boolean getAuthenticated() {
+        return authenticated;
     }
 
-    public void setAutenticated(Boolean autenticated) {
-        this.autenticated = autenticated;
+    public void setAuthenticated(Boolean authenticated) {
+        this.authenticated = authenticated;
     }
 
     public Date getCreated() {
@@ -77,18 +72,5 @@ public class TokenVO implements Serializable {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TokenVO tokenVO = (TokenVO) o;
-        return Objects.equals(userName, tokenVO.userName) && Objects.equals(autenticated, tokenVO.autenticated) && Objects.equals(created, tokenVO.created) && Objects.equals(expiration, tokenVO.expiration) && Objects.equals(accessToken, tokenVO.accessToken) && Objects.equals(refreshToken, tokenVO.refreshToken);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userName, autenticated, created, expiration, accessToken, refreshToken);
     }
 }

@@ -1,16 +1,14 @@
 package com.apiDelivery.api.domain.service;
 
-import java.time.OffsetDateTime;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.apiDelivery.api.domain.exception.NegocioException;
 import com.apiDelivery.api.domain.model.Pedido;
 import com.apiDelivery.api.domain.model.StatusPedido;
 import com.apiDelivery.api.domain.service.EnvioEmailService.Mensagem;
-
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.OffsetDateTime;
 
 @Service
 public class FluxoPedidoService {

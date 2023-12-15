@@ -1,17 +1,16 @@
 package com.apiDelivery.api.domain.service;
 
-import java.util.List;
-
+import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
+import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
+import com.apiDelivery.api.domain.model.FormaPagamento;
+import com.apiDelivery.api.domain.repository.FormaPagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
-import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
-import com.apiDelivery.api.domain.model.FormaPagamento;
-import com.apiDelivery.api.domain.repository.FormaPagamentoRepository;
+import java.util.List;
 
 @Service
 public class FormaPagamentoService {

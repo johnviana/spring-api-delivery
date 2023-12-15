@@ -5,12 +5,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author johnv
@@ -20,7 +19,7 @@ import java.util.*;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "usuarios")
-public class Usuario implements UserDetails, Serializable {
+public class Usuario implements Serializable {
 
 	public Usuario(){}
 
@@ -67,9 +66,9 @@ public class Usuario implements UserDetails, Serializable {
 					referencedColumnName = "id")},
 			inverseJoinColumns = {@JoinColumn(name = "permissao_id",
 					referencedColumnName = "id")})
-	private List<Permissao> permissoes;
+	private List<Permissao> permissoes = new ArrayList<>();
 
-
+	// Conversao de Permissao para roles - quebra de conversão, por causa da userDetail
 	public List<String> getRoles(){
 		List<String> roles = new ArrayList<>();
 		for (Permissao permissao : permissoes){
@@ -103,38 +102,38 @@ public class Usuario implements UserDetails, Serializable {
 		return getGrupos().add(grupo);
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.permissoes;
-	}
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		return this.permissoes;
+//	}
 
-	@Override
-	public String getPassword() {
-		return this.senha;
-	}
-
-	@Override
-	public String getUsername() {
-		return this.nome;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return this.accountNonExpired;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return this.accountNonLocked;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return this.credentialsNonExpired;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return this.enable;
-	}
+//	@Override
+//	public String getPassword() {
+//		return this.senha;
+//	}
+//
+//	@Override
+//	public String getUsername() {
+//		return this.nome;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonExpired() {
+//		return this.accountNonExpired;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonLocked() {
+//		return this.accountNonLocked;
+//	}
+//
+//	@Override
+//	public boolean isCredentialsNonExpired() {
+//		return this.credentialsNonExpired;
+//	}
+//
+//	@Override
+//	public boolean isEnabled() {
+//		return this.enable;
+//	}
 }

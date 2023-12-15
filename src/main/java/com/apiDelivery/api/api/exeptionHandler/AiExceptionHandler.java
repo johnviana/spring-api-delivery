@@ -2,7 +2,6 @@ package com.apiDelivery.api.api.exeptionHandler;
 
 import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
-import com.apiDelivery.api.domain.exception.InvalidJwtAuthenticationException;
 import com.apiDelivery.api.domain.exception.NegocioException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -133,17 +132,17 @@ public class AiExceptionHandler extends ResponseEntityExceptionHandler {
 
 	}
 
-	@ExceptionHandler(InvalidJwtAuthenticationException.class)
-	public ResponseEntity<?> handleInvalidJwtAuthenticationException(NegocioException ex, WebRequest request) {
-
-		HttpStatus status = HttpStatus.FORBIDDEN;
-		ProblemType problemType = ProblemType.ERRO_NEGOCIO;
-		String detail = ex.getMessage();
-
-		Problem problem = createProblemBuilder(status, problemType, detail).userMassage(detail).build();
-
-		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
-
-	}
+//	@ExceptionHandler(InvalidJwtAuthenticationException.class)
+//	public ResponseEntity<?> handleInvalidJwtAuthenticationException(NegocioException ex, WebRequest request) {
+//
+//		HttpStatus status = HttpStatus.FORBIDDEN;
+//		ProblemType problemType = ProblemType.ERRO_NEGOCIO;
+//		String detail = ex.getMessage();
+//
+//		Problem problem = createProblemBuilder(status, problemType, detail).userMassage(detail).build();
+//
+//		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+//
+//	}
 
 }

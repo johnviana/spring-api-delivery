@@ -1,11 +1,11 @@
 package com.apiDelivery.api.domain.service;
 
-import java.util.Map;
-import java.util.Set;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;
+
+import java.util.Map;
+import java.util.Set;
 
 public interface EnvioEmailService {
 

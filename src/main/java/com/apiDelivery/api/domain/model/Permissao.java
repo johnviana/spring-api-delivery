@@ -1,11 +1,9 @@
 package com.apiDelivery.api.domain.model;
 
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 
@@ -13,8 +11,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "permissao")
-public class Permissao implements GrantedAuthority, Serializable {
-
+public class Permissao implements Serializable {
 
 	public Permissao(){}
 
@@ -30,10 +27,10 @@ public class Permissao implements GrantedAuthority, Serializable {
 	@Column
 	private String descricao;
 
-	@Override
-	public String getAuthority() {
-		return this.descricao;
-	}
+//	@Override
+//	public String getAuthority() {
+//		return this.descricao;
+//	}
 }
 
 

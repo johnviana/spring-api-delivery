@@ -1,20 +1,13 @@
 package com.apiDelivery.api.domain.model;
 
 
-
-import org.springframework.hateoas.RepresentationModel;
-
 import com.apiDelivery.api.core.validation.Groups;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.RepresentationModel;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity

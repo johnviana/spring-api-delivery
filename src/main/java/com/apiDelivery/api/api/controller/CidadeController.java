@@ -4,16 +4,17 @@ import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
 import com.apiDelivery.api.domain.exception.NegocioException;
 import com.apiDelivery.api.domain.model.Cidade;
 import com.apiDelivery.api.domain.service.CidadeService;
-
 import jakarta.validation.Valid;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/cidades")
@@ -21,7 +22,33 @@ public class CidadeController {
 	
 	@Autowired
 	private CidadeService cidadeService;
-	
+
+
+	private final MessageSource messageSource;
+
+
+	public CidadeController(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+
+	@GetMapping("/teste")
+
+	public String sayHello(){
+
+
+		return messageSource.getMessage("common.hello", null, LocaleContextHolder.getLocale());
+	}
+
+	@GetMapping("/teste/teste")
+	public String testeIngles(@RequestHeader(name = "Accept-Language", required = false)
+							  Locale locale)
+	{
+		return messageSource.getMessage("common.hello", null, LocaleContextHolder.getLocale());
+
+	}
+
+
+
 	@GetMapping
 	public List<Cidade> listarTodasCidades(){
 		return cidadeService.listarCidades();
