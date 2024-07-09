@@ -11,5 +11,15 @@ public class EntidadeEmUsoException extends NegocioException{
 	public EntidadeEmUsoException(String mensagem) {
 		super(mensagem);
 	}
-	
+
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public static class ServidorEmailNaoEncontradaExcepetion extends NegocioException {
+
+        private static final long serialVersionUID = 1L;
+
+        public ServidorEmailNaoEncontradaExcepetion(String mensagem) {
+            super(mensagem);
+        }
+
+    }
 }

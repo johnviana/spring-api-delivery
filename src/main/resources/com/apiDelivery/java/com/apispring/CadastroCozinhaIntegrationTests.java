@@ -8,13 +8,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.apiDelivery.api.CozinhaController;
-import com.apiDelivery.domain.model.Cozinha;
-import com.apiDelivery.domain.service.CozinhaService;
+import com.apiDelivery.api.domain.model.Cozinha;
+import com.apiDelivery.api.domain.service.CozinhaService;
 
 @SpringBootTest
 public class CadastroCozinhaIntegrationTests  {

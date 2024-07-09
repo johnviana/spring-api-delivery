@@ -13,16 +13,22 @@ import org.springframework.hateoas.RepresentationModel;
 @Entity
 @Data
 public class Estado extends RepresentationModel<Estado>{
-	
+
 	@NotNull(groups = Groups.EstadoId.class)
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
-	
+
 	@NotBlank
 	@Column
 	private String nome;
+
+	@Column
+	private String periodicity;
+
+	@Column
+	private Boolean ativo = true; // Adicionando o campo ativo com valor padrão true
 
 }

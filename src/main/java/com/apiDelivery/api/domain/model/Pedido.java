@@ -56,7 +56,7 @@ public class Pedido {
 	private Restaurante restaurante;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_cliente_id")
+	@JoinColumn(name = "usu_cli_id")
 	private Usuario cliente;
 	
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)

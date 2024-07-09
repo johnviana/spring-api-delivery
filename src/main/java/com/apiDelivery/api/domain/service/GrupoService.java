@@ -2,8 +2,8 @@ package com.apiDelivery.api.domain.service;
 
 import com.apiDelivery.api.domain.exception.EntidadeEmUsoException;
 import com.apiDelivery.api.domain.exception.EntidadeNaoEncontradaExcepetion;
-import com.apiDelivery.api.domain.model.Grupo;
 import com.apiDelivery.api.domain.model.Permissao;
+import com.apiDelivery.api.domain.model.Grupo;
 import com.apiDelivery.api.domain.repository.GrupoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

@@ -24,22 +24,20 @@ public class VendaQueryServiceImpl implements VendaQueryService {
 	
 	@Override
 	public List<VendaDiaria> consultarVendasDiarias(VendaDiariaFilter filtro, String timeOffset) {
+		
 		var builder = manager.getCriteriaBuilder();
 		var query = builder.createQuery(VendaDiaria.class);
 		var root = query.from(Pedido.class);
 		var predicates = new ArrayList<Predicate>();
 		
-		var functionConvertTzDataCriacao = builder.function(
-				"convert_tz", Date.class, root.get("dataCriacao"),
-				builder.literal("+00:00"), builder.literal(timeOffset));
-		
 		var functionDateDataCriacao = builder.function(
-				"date", Date.class, functionConvertTzDataCriacao);
-		
+				"date", Date.class, root.get("dataCriacao"));
+		System.out.println("Apraceu aqui sera1");
 		var selection = builder.construct(VendaDiaria.class,
 				functionDateDataCriacao,
 				builder.count(root.get("id")),
 				builder.sum(root.get("valorTotal")));
+		System.out.println("Apraceu aqui sera2");
 		
 		if (filtro.getRestauranteId() != null) {
 			predicates.add(builder.equal(root.get("restaurante"), filtro.getRestauranteId()));
@@ -54,15 +52,16 @@ public class VendaQueryServiceImpl implements VendaQueryService {
 			predicates.add(builder.lessThanOrEqualTo(root.get("dataCriacao"), 
 					filtro.getDataCriacaoFim()));
 		}
-	      
+		System.out.println("Apraceu aqui sera3");
 		predicates.add(root.get("status").in(
 				StatusPedido.CONFIRMADO, StatusPedido.ENTREGUE));
-		
+		System.out.println("Apraceu aqui sera4");
 		query.select(selection);
 		query.where(predicates.toArray(new Predicate[0]));
 		query.groupBy(functionDateDataCriacao);
-		
+		System.out.println("Apraceu aqui sera5");
 		return manager.createQuery(query).getResultList();
 	}
+
 
 }

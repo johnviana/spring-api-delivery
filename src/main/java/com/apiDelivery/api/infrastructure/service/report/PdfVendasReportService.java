@@ -3,12 +3,11 @@ package com.apiDelivery.api.infrastructure.service.report;
 import java.util.HashMap;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.apiDelivery.api.domain.filter.VendaDiariaFilter;
 import com.apiDelivery.api.domain.service.VendaQueryService;
 import com.apiDelivery.api.domain.service.VendaReportService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -17,7 +16,7 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 
 @Service
-public class PdfVendasReportService implements VendaReportService{
+public class PdfVendasReportService implements VendaReportService {
 
 	@Autowired
 	private VendaQueryService vendaQueryService;

@@ -35,16 +35,14 @@ public class UsuarioService  {
 	@Transactional
 	public Usuario salvar(Usuario usuario) {
 
-		entityManager.detach(usuario);
-
 		Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());
 
-		if(usuarioExistente.isPresent() && !usuarioExistente.get().equals(usuario)) {
+		if(usuarioExistente.isPresent() && !usuarioExistente.get().equals(usuario)){
 			throw new NegocioException(
-					String.format("Já existe um email cadastrado no banco de dados %s", usuario.getEmail()));
+					String.format("Já exite um email cadastrado no banco de dados %s", usuario.getEmail()));
 		}
-
 		return usuarioRepository.save(usuario);
+
 	}
 
 	@Transactional

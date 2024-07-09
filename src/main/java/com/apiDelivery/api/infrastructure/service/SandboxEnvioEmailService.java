@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import com.apiDelivery.api.core.email.EmailProperties;
-import com.apiDelivery.api.domain.service.EnvioEmailService;
-import com.apiDelivery.api.domain.service.EnvioEmailService.Mensagem;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

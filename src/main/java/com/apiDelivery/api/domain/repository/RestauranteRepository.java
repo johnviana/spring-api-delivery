@@ -22,6 +22,11 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, Long>
 	
 	@Query("FROM Restaurante where nome like %:nome and cozinha.id = :id")
 	List<Restaurante> buscarPorNomeIdCozinha(String nome, @Param("id") Long cozinhaId);
-	
+
+	@Query("DELETE FROM Restaurante")
+	void deleteAllCustom();
+
+	boolean existsByAtivoTrue();
+
 
 }

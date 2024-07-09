@@ -43,7 +43,7 @@ public class FormaPagamentoService {
 			formaPagamentoRepository.flush();
 			
 		} catch (EmptyResultDataAccessException e) {
-			throw new  EntidadeNaoEncontradaExcepetion(
+			throw new EntidadeNaoEncontradaExcepetion(
 					String.format("Forma de Pagamento não encontrada", id));
 			
 		} catch (DataIntegrityViolationException e) {

@@ -1,11 +1,11 @@
 package com.apiDelivery.api.core;
 
+import com.apiDelivery.api.Model.EnderecoModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.apiDelivery.api.api.Model.EnderecoModel;
-import com.apiDelivery.api.api.Model.input.ItemPedidoInput;
+import com.apiDelivery.api.Model.input.ItemPedidoInput;
 import com.apiDelivery.api.domain.model.Endereco;
 import com.apiDelivery.api.domain.model.ItemPedido;
 
